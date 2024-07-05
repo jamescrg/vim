@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/space
+~MSle0~/R
 
 # Last Substitute Search Pattern:
 ~MSle0&@$
@@ -21,9 +21,9 @@ $
 
 # Command Line History (newest to oldest):
 :wq
-|2,0,1720187068,,"wq"
+|2,0,1720187383,,"wq"
 :q
-|2,0,1720187057,,"q"
+|2,0,1720187162,,"q"
 :PlugInstall
 |2,0,1720187043,,"PlugInstall"
 :bd!
@@ -123,9 +123,11 @@ $
 
 # Search String History (newest to oldest):
 ? \s\+$
-|2,1,1720187068,,"\\s\\+$"
+|2,1,1720187383,,"\\s\\+$"
+?/R
+|2,1,1720187366,47,"R"
 ? @$
-|2,1,1720187062,,"@$"
+|2,1,1720187363,,"@$"
 ?/space
 |2,1,1720034492,47,"space"
 ?/>h
@@ -220,8 +222,6 @@ $
 |2,1,1718395164,,"\\<Client\\>"
 ?/timesheet
 |2,1,1718309216,47,"timesheet"
-?/activity
-|2,1,1718309084,47,"activity"
 
 # Expression History (newest to oldest):
 
@@ -332,34 +332,34 @@ $
 # Registers:
 ""0	LINE	0
 	.undodir
-|3,1,0,1,1,0,1720187064,".undodir"
+|3,1,0,1,1,0,1720187367,".undodir"
 "1	LINE	0
 	../
-|3,0,1,1,1,0,1720187062,"../"
+|3,0,1,1,1,0,1720187363,"../"
 "2	LINE	0
 	./
-|3,0,2,1,1,0,1720187062,"./"
+|3,0,2,1,1,0,1720187363,"./"
 "3	LINE	0
-	
-|3,0,3,1,1,0,1720187062,""
+	.git/
+|3,0,3,1,1,0,1720187363,".git/"
 "4	LINE	0
-	../
-|3,0,4,1,1,0,1720186897,"../"
+	tags
+|3,0,4,1,1,0,1720187363,"tags"
 "5	LINE	0
-	./
-|3,0,5,1,1,0,1720186897,"./"
+	
+|3,0,5,1,1,0,1720187363,""
 "6	LINE	0
-	
-|3,0,6,1,1,0,1720186897,""
-"7	LINE	0
 	../
-|3,0,7,1,1,0,1720186875,"../"
-"8	LINE	0
+|3,0,6,1,1,0,1720187355,"../"
+"7	LINE	0
 	./
-|3,0,8,1,1,0,1720186875,"./"
-"9	LINE	0
+|3,0,7,1,1,0,1720187355,"./"
+"8	LINE	0
 	
-|3,0,9,1,1,0,1720186875,""
+|3,0,8,1,1,0,1720187355,""
+"9	LINE	0
+	../
+|3,0,9,1,1,0,1720187352,"../"
 "f@	CHAR	0
 	f'r";r"
 |3,2,15,0,1,0,1712414511,"f'r\";r\""
@@ -387,28 +387,64 @@ $
 |4,71,1,0,1709730445,"~/.dotfiles/git/gitconfig"
 'M  164  2  ~/.vim/vimrc
 |4,77,164,2,1709722520,"~/.vim/vimrc"
-'0  2  7  ~/.vim/.gitignore
-|4,48,2,7,1720187068,"~/.vim/.gitignore"
-'1  1  0  ~/.vim/README.md
-|4,49,1,0,1720186906,"~/.vim/README.md"
-'2  1  7  ~/.vim/.gitignore
-|4,50,1,7,1720186884,"~/.vim/.gitignore"
-'3  1  7  ~/.vim/.gitignore
-|4,51,1,7,1720186884,"~/.vim/.gitignore"
-'4  1  0  ~/.vim/vimrc
-|4,52,1,0,1720186472,"~/.vim/vimrc"
-'5  1  0  /etc/nginx/sites-available/law
-|4,53,1,0,1720124044,"/etc/nginx/sites-available/law"
-'6  25  34  ~/law/apps/matters/views.py
-|4,54,25,34,1720122670,"~/law/apps/matters/views.py"
-'7  1  2  ~/law/apps/activity/views.py
-|4,55,1,2,1720040366,"~/law/apps/activity/views.py"
-'8  5  0  ~/law/apps/activity/forms.py
-|4,56,5,0,1720019366,"~/law/apps/activity/forms.py"
-'9  1  0  ~/law/apps/activity/views.py
-|4,57,1,0,1719957809,"~/law/apps/activity/views.py"
+'0  3  12  ~/.vim/README.md
+|4,48,3,12,1720187383,"~/.vim/README.md"
+'1  1  0  ~/.vim/autoload
+|4,49,1,0,1720187359,"~/.vim/autoload"
+'2  1  0  ~/.vim/vimrc
+|4,50,1,0,1720187162,"~/.vim/vimrc"
+'3  2  7  ~/.vim/.gitignore
+|4,51,2,7,1720187068,"~/.vim/.gitignore"
+'4  1  0  ~/.vim/README.md
+|4,52,1,0,1720186906,"~/.vim/README.md"
+'5  1  0  ~/.vim/README.md
+|4,53,1,0,1720186906,"~/.vim/README.md"
+'6  1  7  ~/.vim/.gitignore
+|4,54,1,7,1720186884,"~/.vim/.gitignore"
+'7  1  7  ~/.vim/.gitignore
+|4,55,1,7,1720186884,"~/.vim/.gitignore"
+'8  1  0  ~/.vim/vimrc
+|4,56,1,0,1720186472,"~/.vim/vimrc"
+'9  1  0  /etc/nginx/sites-available/law
+|4,57,1,0,1720124044,"/etc/nginx/sites-available/law"
 
 # Jumplist (newest first):
+-'  3  12  ~/.vim/README.md
+|4,39,3,12,1720187383,"~/.vim/README.md"
+-'  1  0  ~/.vim
+|4,39,1,0,1720187366,"~/.vim"
+-'  1  0  ~/.vim/autoload
+|4,39,1,0,1720187359,"~/.vim/autoload"
+-'  1  0  ~/.vim/autoload
+|4,39,1,0,1720187359,"~/.vim/autoload"
+-'  2  0  ~/.vim
+|4,39,2,0,1720187355,"~/.vim"
+-'  1  0  ~/.vim
+|4,39,1,0,1720187352,"~/.vim"
+-'  1  0  ~/.vim/vimrc
+|4,39,1,0,1720187162,"~/.vim/vimrc"
+-'  1  0  ~/.vim/vimrc
+|4,39,1,0,1720187162,"~/.vim/vimrc"
+-'  1  0  ~/.vim/vimrc
+|4,39,1,0,1720187162,"~/.vim/vimrc"
+-'  1  0  ~/.vim/vimrc
+|4,39,1,0,1720187162,"~/.vim/vimrc"
+-'  1  0  ~/.vim
+|4,39,1,0,1720187160,"~/.vim"
+-'  2  7  ~/.vim/.gitignore
+|4,39,2,7,1720187068,"~/.vim/.gitignore"
+-'  2  7  ~/.vim/.gitignore
+|4,39,2,7,1720187068,"~/.vim/.gitignore"
+-'  2  7  ~/.vim/.gitignore
+|4,39,2,7,1720187068,"~/.vim/.gitignore"
+-'  2  7  ~/.vim/.gitignore
+|4,39,2,7,1720187068,"~/.vim/.gitignore"
+-'  2  7  ~/.vim/.gitignore
+|4,39,2,7,1720187068,"~/.vim/.gitignore"
+-'  2  7  ~/.vim/.gitignore
+|4,39,2,7,1720187068,"~/.vim/.gitignore"
+-'  2  7  ~/.vim/.gitignore
+|4,39,2,7,1720187068,"~/.vim/.gitignore"
 -'  2  7  ~/.vim/.gitignore
 |4,39,2,7,1720187068,"~/.vim/.gitignore"
 -'  1  0  ~/.vim
@@ -429,6 +465,56 @@ $
 |4,39,1,0,1720186906,"~/.vim/README.md"
 -'  1  0  ~/.vim/README.md
 |4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
+-'  1  0  ~/.vim/README.md
+|4,39,1,0,1720186906,"~/.vim/README.md"
 -'  1  0  ~/.vim
 |4,39,1,0,1720186897,"~/.vim"
 -'  1  0  ~/.vim
@@ -455,177 +541,86 @@ $
 |4,39,1,7,1720186884,"~/.vim/.gitignore"
 -'  1  7  ~/.vim/.gitignore
 |4,39,1,7,1720186884,"~/.vim/.gitignore"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  1  0  ~/.vim/vimrc
-|4,39,1,0,1720186472,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  191  26  ~/.vim/vimrc
-|4,39,191,26,1720186385,"~/.vim/vimrc"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
--'  1  0  /etc/nginx/sites-available/law
-|4,39,1,0,1720124044,"/etc/nginx/sites-available/law"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
+-'  1  7  ~/.vim/.gitignore
+|4,39,1,7,1720186884,"~/.vim/.gitignore"
 
 # History of marks within files (newest to oldest):
 
-> ~/.vim/.gitignore
-	*	1720187067	0
-	"	2	7
-	^	2	8
-	.	2	7
-	+	1	7
-	+	2	7
-
 > ~/.vim/README.md
-	*	1720186899	0
-	"	1	0
+	*	1720187382	0
+	"	3	12
+	^	3	13
+	.	3	12
+	+	3	12
 
 > ~/.vim/vimrc
-	*	1720186470	0
+	*	1720187161	0
 	"	1	0
 	^	210	19
 	.	210	18
@@ -643,6 +638,14 @@ $
 	+	210	26
 	+	191	0
 	+	210	18
+
+> ~/.vim/.gitignore
+	*	1720187067	0
+	"	2	7
+	^	2	8
+	.	2	7
+	+	1	7
+	+	2	7
 
 > /etc/nginx/sites-available/law
 	*	1720123530	0
