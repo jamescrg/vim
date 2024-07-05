@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/james/.vim'
+let g:netrw_dirhist_7='/etc/nginx/sites-available'
+let g:netrw_dirhist_6='/etc/nginx'
+let g:netrw_dirhist_5='/home/james/law/apps/activity'
+let g:netrw_dirhist_4='/home/james'
+let g:netrw_dirhist_3='/home/james/ng/sites-available'
+let g:netrw_dirhist_2='/home/james/ng'
+let g:netrw_dirhist_1='/home/james'
+let g:netrw_dirhist_0='/home/james/law'
+let g:netrw_dirhist_9='/etc/letsencrypt/live'

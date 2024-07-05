@@ -1,0 +1,22 @@
+
+snippet pr "print"
+print($1)
+endsnippet
+
+snippet ppr "pretty print"
+from pprint import pprint
+print($1)
+endsnippet
+
+snippet dd "dump and die"
+import config.helpers as helpers
+return helpers.dump($1)
+endsnippet
+
+snippet pud "start pudb"
+from pudb import set_trace; set_trace()
+endsnippet
+
+snippet pdb "start pdb"
+breakpoint()
+endsnippet
