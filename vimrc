@@ -7,7 +7,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/seoul256.vim'                    " color schemes
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'sainnhe/everforest'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'                         " fuzzy search
@@ -36,16 +35,16 @@ call plug#end()
 " seoul256 light
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
-let g:seoul256_background = 254
-colorscheme seoul256-light
+" let g:seoul256_background = 254
+" colorscheme seoul256-light
 
 " everforest
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" set termguicolors
-" let g:everforest_background = 'hard'
-" set background=dark
-" colorscheme everforest
+set termguicolors
+let g:everforest_background = 'medium'
+set background=dark
+colorscheme everforest
 
 " status line
 hi StatusLine ctermbg=2 ctermfg=253
