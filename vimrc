@@ -81,7 +81,7 @@ augroup cursor
     autocmd InsertLeave * set cursorline!
 augroup end
 
-" Ultisnips
+" UltiSnips
 let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
@@ -207,7 +207,7 @@ nnoremap ]q :cnext<cr>zz
 " code folding
 nnoremap <leader>m zM
 nnoremap <leader>r zR
-nnoremap <leader>a za
+nnoremap , za
 
 " search for word under cursor, including first word
 nnoremap * *N
@@ -225,8 +225,7 @@ nnoremap <leader>so :so %<cr>
 nnoremap <leader>eb :e ~/.bashrc<cr>
 nnoremap <leader>et :e ~/.tmux.conf<cr>
 nnoremap <leader>ed :e ~/.dotfiles<cr>
-nnoremap <leader>es :e ~/.dotfiles/vim/UltiSnips<cr>
-nnoremap <leader>eg :e ~/.dotfiles/git/gitconfig<cr>
+nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
 
 " shortcut to view log files
 nnoremap <leader>l :e /var/log/gunicorn<cr>
