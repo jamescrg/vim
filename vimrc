@@ -35,16 +35,14 @@ call plug#end()
 " seoul256 light
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
-" let g:seoul256_background = 254
-" colorscheme seoul256-light
+let g:seoul256_background = 254
+colorscheme seoul256-light
 
 " everforest
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
-let g:everforest_background = 'medium'
-set background=dark
-colorscheme everforest
+" set termguicolors
+" let g:everforest_background = 'medium'
+" set background=dark
+" colorscheme everforest
 
 " status line
 hi StatusLine ctermbg=2 ctermfg=253
@@ -254,3 +252,5 @@ iab ppr from pprint import pprint<cr>pprint()<left><c-r>=Eatchar('\s')<cr>
 
 " dump django objects to browser
 " iab dd import config.helpers as helpers<cr>return helpers.dump()<left><c-r>=Eatchar('\s')<cr>
+
+
