@@ -39,6 +39,8 @@ let g:seoul256_background = 254
 colorscheme seoul256-light
 
 " everforest
+" let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum'
+" let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum'
 " set termguicolors
 " let g:everforest_background = 'medium'
 " set background=dark
@@ -220,6 +222,7 @@ vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>N
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 nnoremap <leader>eb :e ~/.bashrc<cr>
+nnoremap <leader>ea :e ~/.bash_aliases<cr>
 nnoremap <leader>et :e ~/.tmux.conf<cr>
 nnoremap <leader>ed :e ~/.dotfiles<cr>
 nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
