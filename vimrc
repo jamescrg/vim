@@ -175,7 +175,8 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " exit vim
-nnoremap <C-d> :q!<cr>
+" nnoremap <C-d> :q!<cr>
+" nnoremap <leader><space> :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -191,7 +192,6 @@ nnoremap <silent> <leader><space> :noh<cr>
 
 " fzf searches
 nnoremap <leader>f :Files<cr>
-nnoremap <leader>g :GFiles<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>t :Tags<cr>
@@ -204,8 +204,6 @@ nnoremap <leader>c :copen 10<cr>
 nnoremap ]q :cnext<cr>zz
 
 " code folding
-nnoremap <leader>m zM
-nnoremap <leader>r zR
 nnoremap , za
 
 " search for word under cursor, including first word
@@ -216,16 +214,12 @@ nnoremap n nzz
 nnoremap N Nzz
 
 " search for visually selected text
-vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>N
+vnoremap * y/\V<C-R>=escape(@",'/\')<cr><cr>N
 
 " shortcuts to edit configuation files
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
-nnoremap <leader>eb :e ~/.bashrc<cr>
-nnoremap <leader>ea :e ~/.bash_aliases<cr>
-nnoremap <leader>et :e ~/.tmux.conf<cr>
 nnoremap <leader>ed :e ~/.dotfiles<cr>
-nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
 
 " shortcut to view log files
 nnoremap <leader>l :e /var/log/gunicorn<cr>
@@ -256,4 +250,15 @@ iab ppr from pprint import pprint<cr>pprint()<left><c-r>=Eatchar('\s')<cr>
 " dump django objects to browser
 " iab dd import config.helpers as helpers<cr>return helpers.dump()<left><c-r>=Eatchar('\s')<cr>
 
+" fugitive git bindings
+nnoremap <leader>gg :G<cr>
+nnoremap <leader>ga :Git add<space>
+nnoremap <leader>gs :Git status<cr>
+nnoremap <leader>gc :Git commit<space>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gl :Git log<space>
+nnoremap <leader>gb :Git branch<space>
+nnoremap <leader>go :Git checkout<space>
+nnoremap <leader>gps :Dispatch! git push<cr>
+nnoremap <leader>gpl :Dispatch! git pull<cr>
 
