@@ -176,7 +176,7 @@ inoremap jk <esc>
 
 " exit vim
 " nnoremap <C-d> :q!<cr>
-" nnoremap <leader><space> :q!<cr>
+nnoremap <leader><space> :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -188,7 +188,7 @@ nnoremap <S-tab> <C-w>W
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
-nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <silent> <leader>h :noh<cr>
 
 " fzf searches
 nnoremap <leader>f :Files<cr>
