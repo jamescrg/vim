@@ -176,7 +176,7 @@ inoremap jk <esc>
 
 " exit vim
 " nnoremap <C-d> :q!<cr>
-nnoremap <leader><space> :q!<cr>
+" nnoremap <leader><space> :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
