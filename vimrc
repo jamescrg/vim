@@ -10,21 +10,19 @@ Plug 'junegunn/seoul256.vim'                    " color schemes
 Plug 'sainnhe/everforest'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'                         " fuzzy search
-Plug 'tpope/vim-vinegar'                        " file broser
+Plug 'tpope/vim-vinegar'                        " file browser
 Plug 'tpope/vim-fugitive'                       " git integration
-Plug 'vim-scripts/vim-auto-save'                "  auto save
+Plug 'vim-scripts/vim-auto-save'                " auto save
 Plug 'tpope/vim-commentary'                     " comment bindings
 Plug 'tpope/vim-surround'                       " change brackets, parents, quotes, html tags
 Plug 'tpope/vim-repeat'                         " repeat plugin actions
 Plug 'tpope/vim-abolish'                        " covert camel case to snake case etc.
-Plug 'ludovicchabant/vim-gutentags'             " auto update tags file
-Plug 'maralla/completor.vim'                    " better autocomplete, always on
-Plug 'maralla/validator.vim'                    " code validation
 Plug 'farmergreg/vim-lastplace'                 " return to last positon in file when opened
 Plug 'valloric/MatchTagAlways'                  " highlight matching html tags
 Plug 'AndrewRadev/splitjoin.vim'                " split single linees into multiple
-Plug 'SirVer/ultisnips'                         " snippets
 Plug 'kalekundert/vim-coiled-snake'             " python folding
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " lsp server
 
 call plug#end()
 
@@ -80,26 +78,10 @@ augroup cursor
     autocmd InsertLeave * set cursorline!
 augroup end
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger='<c-y>'
-let g:UltiSnipsJumpForwardTrigger='<c-y>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-
-" Completor
-augroup markdown
-    autocmd Filetype markdown let g:completor_auto_trigger = 0
-augroup end
-let g:completor_python_binary = '/usr/bin/python3'
+" Autocompletion behavior
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-
-" Validator
-let g:validator_python_checkers = ['flake8']
-let g:validator_css_checkers = ['csslint']
-let g:validator_json_checkers = ['jsonlint']
-let g:validator_javascript_checkers = ['eslint']
-let g:validator_vim_checkers = ['vint']
 
 let g:auto_save = 1                     " autosave
 let g:auto_save_in_insert_mode = 0      " only autosave after leaving insert
