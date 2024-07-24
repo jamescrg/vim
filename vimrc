@@ -1,8 +1,6 @@
 
-" use '*' to search to desired section
-" Options
-" Keymaps
-" Insertions
+" Plugins
+" -------------------------------------------
 
 call plug#begin('~/.vim/plugged')
 
@@ -21,8 +19,10 @@ Plug 'farmergreg/vim-lastplace'                 " return to last positon in file
 Plug 'valloric/MatchTagAlways'                  " highlight matching html tags
 Plug 'AndrewRadev/splitjoin.vim'                " split single linees into multiple
 Plug 'kalekundert/vim-coiled-snake'             " python folding
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " lsp server
+Plug 'SirVer/ultisnips'                         " maybe ultisnips will work now that I have coc
+Plug 'justinmk/vim-sneak'                       " this has to be a great way to navigate
+Plug 'mileszs/ack.vim'                          " more elegant project-wide search
 
 call plug#end()
 
@@ -72,6 +72,13 @@ if &term =~ "screen"
     exec "set t_PE=\e[201~"
 endif
 
+" enable resizing splits in tmux
+if has('mouse_sgr')
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+
 " highlight current line in insert mode
 augroup cursor
     autocmd InsertEnter * set cursorline!
@@ -79,9 +86,9 @@ augroup cursor
 augroup end
 
 " Autocompletion behavior
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 let g:auto_save = 1                     " autosave
 let g:auto_save_in_insert_mode = 0      " only autosave after leaving insert
@@ -116,12 +123,10 @@ set linebreak                           " break at whitespace not words
 set display=lastline                    " show partial lines at the bottom of the screen
 set scrolloff=5                         " keep at least 5 lines visible above/below cursor
 
-" enable resizing splits in tmux
-if has('mouse_sgr')
-    set ttymouse=sgr
-else
-    set ttymouse=xterm2
-end
+"some settings for coc.vim
+set nobackup
+set nowritebackup
+set updatetime=300
 
 " auto remove trailing whitespace
 augroup whitespace
@@ -146,6 +151,27 @@ set wildignore+=static/bootstrap-3.3.7/**,static/images/**
 set wildignore+=static/admin/**
 
 
+" Coc pum behavior
+" -------------------------------------------
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" let g:coc_snippet_next = '<tab>'
+
+
 " Keymaps
 " -------------------------------------------
 
@@ -157,8 +183,7 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " exit vim
-" nnoremap <C-d> :q!<cr>
-nnoremap <leader><space> :q!<cr>
+nnoremap QQ :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -186,7 +211,7 @@ nnoremap <leader>c :copen 10<cr>
 nnoremap ]q :cnext<cr>zz
 
 " code folding
-nnoremap , za
+nnoremap <leader><space> za
 
 " search for word under cursor, including first word
 nnoremap * *N
@@ -202,9 +227,7 @@ vnoremap * y/\V<C-R>=escape(@",'/\')<cr><cr>N
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 nnoremap <leader>ed :e ~/.dotfiles<cr>
-
-" shortcut to view log files
-nnoremap <leader>l :e /var/log/gunicorn<cr>
+nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
 
 " save as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -217,30 +240,13 @@ inoremap (<cr> (<cr>)<esc>O
 " insert a breakpoint
 nnoremap <leader>p oimport pudb; pu.db<esc>
 
-" insert text
-func Eatchar(pat)
-    let c = nr2char(getchar(0))
-    return (c =~ a:pat) ? '' : c
-endfunc
 
-" print
-iab pr print()<left><c-r>=Eatchar('\s')<cr>
+" Coc Keymaps
+" -------------------------------------------
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" pprint
-iab ppr from pprint import pprint<cr>pprint()<left><c-r>=Eatchar('\s')<cr>
-
-" dump django objects to browser
-" iab dd import config.helpers as helpers<cr>return helpers.dump()<left><c-r>=Eatchar('\s')<cr>
-
-" fugitive git bindings
-nnoremap <leader>gg :G<cr>
-nnoremap <leader>ga :Git add<space>
-nnoremap <leader>gs :Git status<cr>
-nnoremap <leader>gc :Git commit<space>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gl :Git log<space>
-nnoremap <leader>gb :Git branch<space>
-nnoremap <leader>go :Git checkout<space>
-nnoremap <leader>gps :Dispatch! git push<cr>
-nnoremap <leader>gpl :Dispatch! git pull<cr>
-
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
