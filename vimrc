@@ -184,10 +184,10 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " exit vim
-nnoremap KK :q!<cr>
+nnoremap QQ :q!<cr>
 
 " close buffer
-" nnoremap <S-k> :bd<cr>
+nnoremap <S-k> :bd<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
@@ -216,7 +216,7 @@ nnoremap <leader>c :copen 10<cr>
 nnoremap ]q :cnext<cr>zz
 
 " code folding
-" nnoremap , za
+nnoremap , za
 
 " search for word under cursor, including first word
 nnoremap * *N
@@ -255,3 +255,11 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
+
+
+" close fugitive
+" nnoremap <space>g <Cmd>vertical Git \| vertical resize 80<CR>
+augroup FugitiveToggle
+  autocmd!
+  autocmd Filetype fugitive nnoremap <buffer> <space>g <C-w>q
+augroup END
