@@ -23,6 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " lsp server
 Plug 'SirVer/ultisnips'                         " maybe ultisnips will work now that I have coc
 Plug 'justinmk/vim-sneak'                       " this has to be a great way to navigate
 Plug 'mileszs/ack.vim'                          " more elegant project-wide search
+" Plug 'preservim/vim-indent-guides'              " indent guides, really??
 
 call plug#end()
 
@@ -183,10 +184,10 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " exit vim
-nnoremap QQ :q!<cr>
+nnoremap KK :q!<cr>
 
 " close buffer
-nnoremap <S-k> :bd<cr>
+" nnoremap <S-k> :bd<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
@@ -195,13 +196,17 @@ nnoremap <S-tab> <C-w>W
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
-nnoremap <silent> <leader>h :noh<cr>
+" nnoremap <silent> <leader>h :noh<cr>
+nnoremap <silent> <esc> :noh<cr>
 
 " fzf searches
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>t :Tags<cr>
+
+" invoke fugitive
+nnoremap <leader>g :G<space>
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -211,7 +216,7 @@ nnoremap <leader>c :copen 10<cr>
 nnoremap ]q :cnext<cr>zz
 
 " code folding
-nnoremap <leader><space> za
+" nnoremap , za
 
 " search for word under cursor, including first word
 nnoremap * *N
