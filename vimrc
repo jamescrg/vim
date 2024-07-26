@@ -228,7 +228,7 @@ nnoremap <leader>c :copen 10<cr>
 nnoremap ]q :cnext<cr>zz
 
 " code folding
-nnoremap , za
+nnoremap <leader>a za
 
 " search for word under cursor, including first word
 nnoremap * *N
