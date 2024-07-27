@@ -4,26 +4,25 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/seoul256.vim'                    " color schemes
+Plug 'junegunn/seoul256.vim'                            " color schemes
 Plug 'sainnhe/everforest'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'                         " fuzzy search
-Plug 'tpope/vim-vinegar'                        " file browser
-Plug 'tpope/vim-fugitive'                       " git integration
-Plug 'vim-scripts/vim-auto-save'                " auto save
-Plug 'tpope/vim-commentary'                     " comment bindings
-Plug 'tpope/vim-surround'                       " change brackets, parents, quotes, html tags
-Plug 'tpope/vim-repeat'                         " repeat plugin actions
-Plug 'tpope/vim-abolish'                        " covert camel case to snake case etc.
-Plug 'farmergreg/vim-lastplace'                 " return to last positon in file when opened
-Plug 'valloric/MatchTagAlways'                  " highlight matching html tags
-Plug 'AndrewRadev/splitjoin.vim'                " split single linees into multiple
-Plug 'kalekundert/vim-coiled-snake'             " python folding
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " lsp server
-Plug 'SirVer/ultisnips'                         " maybe ultisnips will work now that I have coc
-Plug 'justinmk/vim-sneak'                       " this has to be a great way to navigate
-Plug 'mileszs/ack.vim'                          " more elegant project-wide search
-" Plug 'preservim/vim-indent-guides'              " indent guides, really??
+Plug 'junegunn/fzf.vim'                                 " fuzzy search
+Plug 'tpope/vim-vinegar'                                " file browser
+Plug 'tpope/vim-fugitive'                               " git integration
+Plug 'vim-scripts/vim-auto-save'                        " auto save
+Plug 'tpope/vim-commentary'                             " comment bindings
+Plug 'tpope/vim-surround'                               " change brackets, parents, quotes, html tags
+Plug 'tpope/vim-repeat'                                 " repeat plugin actions
+Plug 'tpope/vim-abolish'                                " covert camel case to snake case etc.
+Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
+Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
+Plug 'AndrewRadev/splitjoin.vim'                        " split single linees into multiple
+Plug 'kalekundert/vim-coiled-snake'                     " python folding
+Plug 'neoclide/coc.nvim', {'branch': 'release'}         " lsp server
+Plug 'SirVer/ultisnips'                                 " maybe ultisnips will work now that I have coc
+Plug 'justinmk/vim-sneak'                               " this has to be a great way to navigate
+Plug 'junegunn/rainbow_parentheses.vim'                 " keep track of parentheses
 
 call plug#end()
 
@@ -93,6 +92,7 @@ augroup end
 
 let g:auto_save = 1                     " autosave
 let g:auto_save_in_insert_mode = 0      " only autosave after leaving insert
+set encoding=UTF-8                      " sets encoding
 set laststatus=2                        " always show status line
 set cursorline                          " always highlight cursor line
 set ignorecase                          " ignore case
@@ -197,6 +197,7 @@ inoremap jk <esc>
 
 " exit vim
 nnoremap <C-d> :q!<cr>
+nnoremap QQ :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -215,7 +216,6 @@ nnoremap <silent> <esc> :noh<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
-nnoremap <leader>t :term<cr>
 
 " invoke fugitive
 nnoremap <leader>g :G<space>
