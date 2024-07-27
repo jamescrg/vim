@@ -196,7 +196,7 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " exit vim
-nnoremap QQ :q!<cr>
+nnoremap <C-d> :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -215,7 +215,7 @@ nnoremap <silent> <esc> :noh<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
-nnoremap <leader>t :Tags<cr>
+nnoremap <leader>t :term<cr>
 
 " invoke fugitive
 nnoremap <leader>g :G<space>
