@@ -218,7 +218,7 @@ nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
 
 " invoke fugitive
-nnoremap <leader>g :G<space>
+nnoremap <leader>g :G<cr>]]
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -228,7 +228,7 @@ nnoremap <leader>c :copen 10<cr>
 nnoremap ]q :cnext<cr>zz
 
 " code folding
-nnoremap <leader>a za
+nnoremap , za
 
 " search for word under cursor, including first word
 nnoremap * *N
