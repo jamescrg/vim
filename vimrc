@@ -4,8 +4,8 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/seoul256.vim'                            " color schemes
-Plug 'sainnhe/everforest'
+Plug 'junegunn/seoul256.vim'                            " color scheme
+Plug 'sainnhe/everforest'                               " color scheme
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'                                 " fuzzy search
 Plug 'tpope/vim-vinegar'                                " file browser
@@ -14,15 +14,11 @@ Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'tpope/vim-commentary'                             " comment bindings
 Plug 'tpope/vim-surround'                               " change brackets, parents, quotes, html tags
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
-Plug 'tpope/vim-abolish'                                " covert camel case to snake case etc.
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
-Plug 'AndrewRadev/splitjoin.vim'                        " split single linees into multiple
-Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " lsp server
-Plug 'SirVer/ultisnips'                                 " maybe ultisnips will work now that I have coc
+Plug 'SirVer/ultisnips'                                 " snippet manager
 Plug 'justinmk/vim-sneak'                               " this has to be a great way to navigate
-Plug 'junegunn/rainbow_parentheses.vim'                 " keep track of parentheses
 
 call plug#end()
 
@@ -36,16 +32,10 @@ call plug#end()
 let g:seoul256_background = 254
 colorscheme seoul256-light
 
-" everforest
-" let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum'
-" let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum'
-" set termguicolors
-" let g:everforest_background = 'medium'
-" set background=dark
-" colorscheme everforest
 
 " status line
 hi StatusLine ctermbg=2 ctermfg=253
+hi StatusLineNC ctermbg=2 ctermfg=253
 set statusline=
 set statusline+=\ %f
 set statusline+=%=
@@ -84,11 +74,6 @@ augroup cursor
     autocmd InsertEnter * set cursorline!
     autocmd InsertLeave * set cursorline!
 augroup end
-
-" Autocompletion behavior
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 let g:auto_save = 1                     " autosave
 let g:auto_save_in_insert_mode = 0      " only autosave after leaving insert
@@ -181,8 +166,8 @@ endfunction
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
 let g:UltiSnipsExpandTrigger="<c-b>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " Keymaps
@@ -225,6 +210,7 @@ nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 
 " quickfix window
 nnoremap <leader>c :copen 10<cr>
+nnoremap [q :cprevious<cr>zz
 nnoremap ]q :cnext<cr>zz
 
 " code folding
@@ -253,9 +239,6 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap (<cr> (<cr>)<esc>O
-
-" insert a breakpoint
-nnoremap <leader>p oimport pudb; pu.db<esc>
 
 
 " Coc Keymaps
