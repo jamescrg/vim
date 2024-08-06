@@ -18,7 +18,7 @@ Plug 'farmergreg/vim-lastplace'                         " return to last positon
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " lsp server
 Plug 'SirVer/ultisnips'                                 " snippet manager
-Plug 'justinmk/vim-sneak'                               " this has to be a great way to navigate
+Plug 'maralla/validator.vim'                            " validate css and python
 
 call plug#end()
 
@@ -137,39 +137,6 @@ set wildignore+=static/bootstrap-3.3.7/**,static/images/**
 set wildignore+=static/admin/**
 
 
-" Coc pum behavior
-" -------------------------------------------
-" Use tab for trigger completion with characters ahead and navigate
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" let g:coc_snippet_next = '<tab>'
-"
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<c-b>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-
 " Keymaps
 " -------------------------------------------
 
@@ -241,20 +208,50 @@ inoremap [<cr> [<cr>]<esc>O
 inoremap (<cr> (<cr>)<esc>O
 
 
-" Coc Keymaps
 " -------------------------------------------
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Fugitive
+" -------------------------------------------
 
-" GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-
-
-" close fugitive
 " nnoremap <space>g <Cmd>vertical Git \| vertical resize 80<CR>
 augroup FugitiveToggle
   autocmd!
   autocmd Filetype fugitive nnoremap <buffer> <space>g <C-w>q
 augroup END
+
+
+" -------------------------------------------
+" Coc
+" -------------------------------------------
+
+" Use tab for trigger completion with characters ahead and navigate
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+
+" -------------------------------------------
+" UltiSnips
+" -------------------------------------------
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
