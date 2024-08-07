@@ -22,9 +22,11 @@ Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'tpope/vim-dadbod'                                 " database interaction
 Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
 Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
+Plug 'junegunn/vim-peekaboo'                            " preview registers
 " Plug 'maralla/validator.vim'                          " validate css and python
 
 call plug#end()
+
 
 
 " Appearance
