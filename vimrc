@@ -18,7 +18,11 @@ Plug 'farmergreg/vim-lastplace'                         " return to last positon
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " lsp server
 Plug 'SirVer/ultisnips'                                 " snippet manager
-Plug 'maralla/validator.vim'                            " validate css and python
+Plug 'kalekundert/vim-coiled-snake'                     " python folding
+Plug 'tpope/vim-dadbod'                                 " database interaction
+Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
+Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
+" Plug 'maralla/validator.vim'                          " validate css and python
 
 call plug#end()
 
@@ -148,11 +152,11 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " exit vim
-nnoremap <C-d> :q!<cr>
 nnoremap QQ :q!<cr>
+nnoremap <C-d> :q!<cr>
 
 " close buffer
-nnoremap <S-k> :bd<cr>
+nnoremap K :bd<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
@@ -170,7 +174,7 @@ nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
 
 " invoke fugitive
-nnoremap <leader>g :G<cr>]]
+nnoremap <leader>g :G<cr><c-w>o
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -179,6 +183,8 @@ nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 nnoremap <leader>c :copen 10<cr>
 nnoremap [q :cprevious<cr>zz
 nnoremap ]q :cnext<cr>zz
+nnoremap [t :silent tabprevious<cr>zz
+nnoremap ]t :silent tabnext<cr>zz
 
 " code folding
 nnoremap , za
@@ -206,6 +212,12 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap (<cr> (<cr>)<esc>O
+
+
+" -------------------------------------------
+" Dadbod
+" -------------------------------------------
+let g:db_ui_execute_on_save = 0
 
 
 " -------------------------------------------
@@ -252,6 +264,18 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<c-b>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<c-b>'
+let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+
+
+" -------------------------------------------
+" Validator
+" -------------------------------------------
+" let g:validator_python_checkers = ['flake8']
+" let g:validator_css_checkers = ['csslint']
+" let g:validator_json_checkers = ['jsonlint']
+" let g:validator_javascript_checkers = ['eslint']
+" let g:validator_vim_checkers = ['vint']
+
+
