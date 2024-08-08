@@ -12,7 +12,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fuzzy search utility
 Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
 Plug 'tpope/vim-vinegar'                                " file broser
 Plug 'tpope/vim-fugitive'                               " git integration
-Plug 'vim-scripts/vim-auto-save'                        "  auto save
+Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'tpope/vim-commentary'                             " comment bindings
 Plug 'tpope/vim-surround'                               " change brackets, parents, quotes, html tags
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
@@ -33,8 +33,9 @@ Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for dat
 call plug#end()
 
 
+" ----------------------------------------------------------------------------------
 " Appearance
-" -------------------------------------------
+" ----------------------------------------------------------------------------------
 
 " seoul256 light
 "   Range:   252 (darkest) ~ 256 (lightest)
@@ -64,8 +65,9 @@ hi Pmenu ctermbg=253 ctermfg=5
 hi PmenuSel ctermbg=5 ctermfg=253
 
 
+" ----------------------------------------------------------------------------------
 " Options
-" -------------------------------------------
+" ----------------------------------------------------------------------------------
 
 filetype plugin on
 
@@ -83,27 +85,6 @@ augroup cursor
     autocmd InsertEnter * set cursorline!
     autocmd InsertLeave * set cursorline!
 augroup end
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger='<c-y>'
-let g:UltiSnipsJumpForwardTrigger='<c-y>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-
-" Completor
-augroup markdown
-    autocmd Filetype markdown let g:completor_auto_trigger = 0
-augroup end
-let g:completor_python_binary = '/usr/bin/python3'
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-
-" Validator
-let g:validator_python_checkers = ['flake8']
-let g:validator_css_checkers = ['csslint']
-let g:validator_json_checkers = ['jsonlint']
-let g:validator_javascript_checkers = ['eslint']
-let g:validator_vim_checkers = ['vint']
 
 let g:auto_save = 1                             " autosave
 let g:auto_save_in_insert_mode = 0              " only autosave after leaving insert
@@ -168,8 +149,9 @@ set wildignore+=static/bootstrap-3.3.7/**,static/images/**
 set wildignore+=static/admin/**
 
 
+" ---------------------------------------------------------------------------
 " Keymaps
-" -------------------------------------------
+" ---------------------------------------------------------------------------
 
 " leader
 let mapleader = ' '
@@ -205,6 +187,7 @@ nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 " quickfix window
 nnoremap <leader>c :copen 10<cr>
 nnoremap ]q :cnext<cr>zz
+nnoremap [q :cprevious<cr>zz
 
 " code folding
 nnoremap , za
@@ -235,25 +218,11 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap (<cr> (<cr>)<esc>O
 
-" insert a breakpoint
-nnoremap <leader>p oimport pudb; pu.db<esc>
 
-" insert text
-func Eatchar(pat)
-    let c = nr2char(getchar(0))
-    return (c =~ a:pat) ? '' : c
-endfunc
+" ----------------------------------------------------------------------------------
+" Fugitive
+" ----------------------------------------------------------------------------------
 
-" print
-iab pr print()<left><c-r>=Eatchar('\s')<cr>
-
-" pprint
-iab ppr from pprint import pprint<cr>pprint()<left><c-r>=Eatchar('\s')<cr>
-
-" dump django objects to browser
-" iab dd import config.helpers as helpers<cr>return helpers.dump()<left><c-r>=Eatchar('\s')<cr>
-
-" fugitive git bindings
 nnoremap <leader>gg :G<cr>
 nnoremap <leader>ga :Git add<space>
 nnoremap <leader>gs :Git status<cr>
@@ -264,4 +233,45 @@ nnoremap <leader>gb :Git branch<space>
 nnoremap <leader>go :Git checkout<space>
 nnoremap <leader>gps :Dispatch! git push<cr>
 nnoremap <leader>gpl :Dispatch! git pull<cr>
+
+
+" ----------------------------------------------------------------------------------
+" Dadbod
+" ----------------------------------------------------------------------------------
+
+let g:db_ui_execute_on_save = 0
+autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+
+
+" ----------------------------------------------------------------------------------
+" UltiSnips
+" ----------------------------------------------------------------------------------
+
+let g:UltiSnipsExpandTrigger='<c-y>'
+let g:UltiSnipsJumpForwardTrigger='<c-y>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+
+
+" ----------------------------------------------------------------------------------
+" Completor
+" ----------------------------------------------------------------------------------
+
+augroup markdown
+    autocmd Filetype markdown let g:completor_auto_trigger = 0
+augroup end
+let g:completor_python_binary = '/usr/bin/python3'
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+
+" ----------------------------------------------------------------------------------
+" Validator
+" ----------------------------------------------------------------------------------
+
+let g:validator_python_checkers = ['flake8']
+let g:validator_css_checkers = ['csslint']
+let g:validator_json_checkers = ['jsonlint']
+let g:validator_javascript_checkers = ['eslint']
+let g:validator_vim_checkers = ['vint']
 
