@@ -6,25 +6,29 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/seoul256.vim'                    " color schemes
-Plug 'sainnhe/everforest'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'                         " fuzzy search
-Plug 'tpope/vim-vinegar'                        " file broser
-Plug 'tpope/vim-fugitive'                       " git integration
-Plug 'vim-scripts/vim-auto-save'                "  auto save
-Plug 'tpope/vim-commentary'                     " comment bindings
-Plug 'tpope/vim-surround'                       " change brackets, parents, quotes, html tags
-Plug 'tpope/vim-repeat'                         " repeat plugin actions
-Plug 'tpope/vim-abolish'                        " covert camel case to snake case etc.
-Plug 'ludovicchabant/vim-gutentags'             " auto update tags file
-Plug 'maralla/completor.vim'                    " better autocomplete, always on
-Plug 'maralla/validator.vim'                    " code validation
-Plug 'farmergreg/vim-lastplace'                 " return to last positon in file when opened
-Plug 'valloric/MatchTagAlways'                  " highlight matching html tags
-Plug 'AndrewRadev/splitjoin.vim'                " split single linees into multiple
-Plug 'SirVer/ultisnips'                         " snippets
-Plug 'kalekundert/vim-coiled-snake'             " python folding
+Plug 'junegunn/seoul256.vim'                            " preferred light colorscheme
+Plug 'sainnhe/everforest'                               " preferred dark colorscheme
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fuzzy search utility
+Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
+Plug 'tpope/vim-vinegar'                                " file broser
+Plug 'tpope/vim-fugitive'                               " git integration
+Plug 'vim-scripts/vim-auto-save'                        "  auto save
+Plug 'tpope/vim-commentary'                             " comment bindings
+Plug 'tpope/vim-surround'                               " change brackets, parents, quotes, html tags
+Plug 'tpope/vim-repeat'                                 " repeat plugin actions
+Plug 'tpope/vim-abolish'                                " covert camel case to snake case etc.
+Plug 'tpope/vim-unimpaired'                             " complimentary pairs of mappings
+Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
+Plug 'maralla/completor.vim'                            " better autocomplete, always on
+Plug 'maralla/validator.vim'                            " code validation
+Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
+Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
+Plug 'SirVer/ultisnips'                                 " snippets
+Plug 'kalekundert/vim-coiled-snake'                     " python folding
+Plug 'junegunn/vim-peekaboo'                            " preview registers
+Plug 'tpope/vim-dadbod'                                 " database interaction
+Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
+Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
 
 call plug#end()
 
@@ -101,38 +105,38 @@ let g:validator_json_checkers = ['jsonlint']
 let g:validator_javascript_checkers = ['eslint']
 let g:validator_vim_checkers = ['vint']
 
-let g:auto_save = 1                     " autosave
-let g:auto_save_in_insert_mode = 0      " only autosave after leaving insert
-set laststatus=2                        " always show status line
-set cursorline                          " always highlight cursor line
-set ignorecase                          " ignore case
-set smartcase                           " except when an upper case character is used
-set incsearch                           " start searching as it is typed
-set hlsearch                            " highlight search patterns
-set mouse=a                             " enable mouse usage
-set noswapfile                          " no swap files
-set splitright                          " open splits on the right
-set splitbelow                          " open splits on bottom
-set foldmethod=indent                   " fold behavior
-set foldlevel=99                        " folds closed by default
-set expandtab                           " inserts spaces when tab key is pressed
-set tabstop=4                           " sets for spaces for tabs
-set softtabstop=4                       " number of spaces removed by backspace key
-set shiftwidth=4                        " sets number of spaces to insert/remove using indentation commands
-set autoindent                          " autoindent
-set shiftround                          " use multiple of shiftwidth when indenting with '<' and '>'
-set backspace=indent,eol,start          " backspace
-set ttimeoutlen=50                      " elminiate delay in escaping out of fzf
-set undofile                            " persistent undo history
-set undodir=~/.vim/undodir              " undo history file location
-set viminfofile=~/.vim/viminfo          " move viminfo to vim folder
-set signcolumn=number                   " prevent signs from opening another gutter
-set number                              " always show line numbers
-set relativenumber                      " use relative line numbers
-set nowrap                              " wrap lines
-set linebreak                           " break at whitespace not words
-set display=lastline                    " show partial lines at the bottom of the screen
-set scrolloff=5                         " keep at least 5 lines visible above/below cursor
+let g:auto_save = 1                             " autosave
+let g:auto_save_in_insert_mode = 0              " only autosave after leaving insert
+set laststatus=2                                " always show status line
+set cursorline                                  " always highlight cursor line
+set ignorecase                                  " ignore case
+set smartcase                                   " except when an upper case character is used
+set incsearch                                   " start searching as it is typed
+set hlsearch                                    " highlight search patterns
+set mouse=a                                     " enable mouse usage
+set noswapfile                                  " no swap files
+set splitright                                  " open splits on the right
+set splitbelow                                  " open splits on bottom
+set foldmethod=indent                           " fold behavior
+set foldlevel=99                                " folds closed by default
+set expandtab                                   " inserts spaces when tab key is pressed
+set tabstop=4                                   " sets for spaces for tabs
+set softtabstop=4                               " number of spaces removed by backspace key
+set shiftwidth=4                                " sets number of spaces to insert/remove using indentation commands
+set autoindent                                  " autoindent
+set shiftround                                  " use multiple of shiftwidth when indenting with '<' and '>'
+set backspace=indent,eol,start                  " backspace
+set ttimeoutlen=50                              " elminiate delay in escaping out of fzf
+set undofile                                    " persistent undo history
+set undodir=~/.vim/undodir                      " undo history file location
+set viminfofile=~/.vim/viminfo                  " move viminfo to vim folder
+set signcolumn=number                           " prevent signs from opening another gutter
+set number                                      " always show line numbers
+set relativenumber                              " use relative line numbers
+set nowrap                                      " wrap lines
+set linebreak                                   " break at whitespace not words
+set display=lastline                            " show partial lines at the bottom of the screen
+set scrolloff=3                                 " keep at least 5 lines visible above/below cursor
 
 " enable resizing splits in tmux
 if has('mouse_sgr')
@@ -175,8 +179,7 @@ inoremap jj <esc>
 inoremap jk <esc>
 
 " exit vim
-" nnoremap <C-d> :q!<cr>
-" nnoremap <leader><space> :q!<cr>
+nnoremap <C-d> :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -188,7 +191,7 @@ nnoremap <S-tab> <C-w>W
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
-nnoremap <silent> <leader>h :noh<cr>
+nnoremap <silent> <esc> :noh<cr>
 
 " fzf searches
 nnoremap <leader>f :Files<cr>
