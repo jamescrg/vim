@@ -170,6 +170,7 @@ nnoremap <S-k> :bd<cr>
 nnoremap <leader>v :vsp<cr>
 nnoremap <tab> <C-w>w
 nnoremap <S-tab> <C-w>W
+nnoremap <C-p> <C-i>
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
@@ -179,15 +180,15 @@ nnoremap <silent> <esc> :noh<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
-nnoremap <leader>t :Tags<cr>
+" nnoremap <leader>t :Tags<cr>
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 
 " quickfix window
-nnoremap <leader>c :copen 10<cr>
-nnoremap ]q :cnext<cr>zz
-nnoremap [q :cprevious<cr>zz
+nnoremap <leader>q :copen 10<cr>
+" nnoremap ]q :cnext<cr>zz
+" nnoremap [q :cprevious<cr>zz
 
 " code folding
 nnoremap , za
@@ -220,27 +221,13 @@ inoremap (<cr> (<cr>)<esc>O
 
 
 " ----------------------------------------------------------------------------------
-" Fugitive
-" ----------------------------------------------------------------------------------
-
-nnoremap <leader>gg :G<cr>
-nnoremap <leader>ga :Git add<space>
-nnoremap <leader>gs :Git status<cr>
-nnoremap <leader>gc :Git commit<space>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gl :Git log<space>
-nnoremap <leader>gb :Git branch<space>
-nnoremap <leader>go :Git checkout<space>
-nnoremap <leader>gps :Dispatch! git push<cr>
-nnoremap <leader>gpl :Dispatch! git pull<cr>
-
-
-" ----------------------------------------------------------------------------------
 " Dadbod
 " ----------------------------------------------------------------------------------
 
 let g:db_ui_execute_on_save = 0
-autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+augroup sql
+    autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+augroup end
 
 
 " ----------------------------------------------------------------------------------
@@ -274,4 +261,3 @@ let g:validator_css_checkers = ['csslint']
 let g:validator_json_checkers = ['jsonlint']
 let g:validator_javascript_checkers = ['eslint']
 let g:validator_vim_checkers = ['vint']
-
