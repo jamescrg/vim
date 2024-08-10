@@ -162,6 +162,7 @@ inoremap jk <esc>
 
 " exit vim
 nnoremap <C-d> :q!<cr>
+nnoremap QQ :q!<cr>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -207,6 +208,7 @@ vnoremap * y/\V<C-R>=escape(@",'/\')<cr><cr>N
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 nnoremap <leader>ed :e ~/.dotfiles<cr>
+nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
 
 " shortcut to view log files
 nnoremap <leader>l :e /var/log/gunicorn<cr>
@@ -219,6 +221,8 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap (<cr> (<cr>)<esc>O
 
+nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
+nnoremap <silent> <leader>db :tab DBUI
 
 " ----------------------------------------------------------------------------------
 " Dadbod
