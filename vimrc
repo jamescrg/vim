@@ -170,7 +170,9 @@ inoremap jk <esc>
 
 " exit vim
 nnoremap <C-d> :q!<cr>
-nnoremap QQ :q!<cr>
+
+" scroll down
+nnoremap <C-m> <C-d>
 
 " close buffer
 nnoremap <S-k> :bd<cr>
@@ -195,9 +197,9 @@ nnoremap <leader>r :Rg<cr>
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 
 " quickfix window
-nnoremap <leader>q :copen 10<cr>
-" nnoremap ]q :cnext<cr>zz
-" nnoremap [q :cprevious<cr>zz
+nnoremap <leader>c :copen 10<cr>
+nnoremap ]q :cnext<cr>zz
+nnoremap [q :cprevious<cr>zz
 
 " code folding
 nnoremap , za
