@@ -230,8 +230,14 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
 inoremap (<cr> (<cr>)<esc>O
 
+" open lazygit in vim
 nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
+
+" open dadbod in a separate tab
 nnoremap <silent> <leader>db :tab DBUI
+
+" reselect pasted text
+nnoremap p p`[v`]
 
 " ----------------------------------------------------------------------------------
 " Dadbod
