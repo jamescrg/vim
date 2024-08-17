@@ -27,16 +27,14 @@ Plug 'tpope/vim-dadbod'                                 " database interaction
 Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
 Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
 
-" autocomplete and error checking - option 1
-" Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
-" Plug 'maralla/completor.vim'                            " better autocomplete, always on
-
-" autocompletion and error checking - option 2
-Plug 'neoclide/coc.nvim', {'branch': 'release'}         " lsp server
+Plug 'maralla/completor.vim'                            " better autocomplete, always on
+Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
 
 " snippets
 Plug 'SirVer/ultisnips'                                 " snippet manager
-" Plug 'honza/vim-snippets'                               " snippet liberary
+
+" experimental
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -239,6 +237,7 @@ nnoremap <silent> <leader>db :tab DBUI
 " reselect pasted text
 nnoremap p p`[v`]
 
+
 " ----------------------------------------------------------------------------------
 " Dadbod
 " ----------------------------------------------------------------------------------
@@ -250,7 +249,7 @@ let g:db_ui_execute_on_save = 0
 " UltiSnips
 " ----------------------------------------------------------------------------------
 
-let g:UltiSnipsExpandTrigger='<c-b>'
+let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-b>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
@@ -259,13 +258,13 @@ let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 " Completor
 " ----------------------------------------------------------------------------------
 
-" augroup markdown
-"     autocmd Filetype markdown let g:completor_auto_trigger = 0
-" augroup end
-" let g:completor_python_binary = '/usr/bin/python3'
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+augroup markdown
+    autocmd Filetype markdown let g:completor_auto_trigger = 0
+augroup end
+let g:completor_python_binary = '/usr/bin/python3'
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 
 " ----------------------------------------------------------------------------------
@@ -277,34 +276,3 @@ let g:validator_css_checkers = ['csslint']
 let g:validator_json_checkers = ['jsonlint']
 let g:validator_javascript_checkers = ['eslint']
 let g:validator_vim_checkers = ['vint']
-
-
-
-" ----------------------------------------------------------------------------------
-" Coc
-" ----------------------------------------------------------------------------------
-
-set nobackup
-set nowritebackup
-set updatetime=300
-
-" Use tab for trigger completion with characters ahead and navigate
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
