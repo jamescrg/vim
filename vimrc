@@ -6,38 +6,39 @@
 
 call plug#begin('~/.vim/plugged')
 
+" colors
 Plug 'junegunn/seoul256.vim'                            " preferred light colorscheme
 Plug 'sainnhe/everforest'                               " preferred dark colorscheme
+
+" files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fuzzy search utility
 Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
 Plug 'tpope/vim-vinegar'                                " file broser
-Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'vim-scripts/vim-auto-save'                        " auto save
+Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
+
+" movement
+Plug 'justinmk/vim-sneak'
+
+" completion and linting
+Plug 'maralla/completor.vim'                            " better autocomplete, always on
+Plug 'maralla/validator.vim'                            " code validation
+Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
+Plug 'SirVer/ultisnips'                                 " snippet manager
+
+" conveniences
+Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'tpope/vim-commentary'                             " comment bindings
 Plug 'tpope/vim-surround'                               " change brackets, parents, quotes, html tags
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
-Plug 'tpope/vim-abolish'                                " covert camel case to snake case etc.
-Plug 'tpope/vim-unimpaired'                             " complimentary pairs of mappings
-Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
-Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'junegunn/vim-peekaboo'                            " preview registers
+Plug 'kalekundert/vim-coiled-snake'                     " python folding
 
 " database
 Plug 'tpope/vim-dadbod'                                 " database interaction
 Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
 Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
-
-" completion and linting
-Plug 'maralla/completor.vim'                            " better autocomplete, always on
-" Plug 'maralla/validator.vim'                            " code validation
-Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
-Plug 'SirVer/ultisnips'                                 " snippet manager
-Plug 'dense-analysis/ale'
-
-" experimental
-Plug 'justinmk/vim-sneak'
-Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -95,9 +96,6 @@ augroup cursor
     autocmd InsertLeave * set cursorline!
 augroup end
 
-let g:ale_completion_enabled = 1
-let g:auto_save = 1                             " autosave
-let g:auto_save_in_insert_mode = 0              " only autosave after leaving insert
 set laststatus=2                                " always show status line
 set cursorline                                  " always highlight cursor line
 set ignorecase                                  " ignore case
@@ -182,7 +180,7 @@ nnoremap <leader>k :bd<cr>
 
 " exit vim
 nnoremap <C-d> :q!<cr>
-nnoremap Q :q!<cr>
+nnoremap <leader>q :q!<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
@@ -242,6 +240,13 @@ nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
 " open dadbod in a separate tab
 nnoremap <silent> <leader>db :tab DBUI
 
+" ----------------------------------------------------------------------------------
+" Autosave
+" ----------------------------------------------------------------------------------
+
+let g:auto_save = 1                             " autosave
+let g:auto_save_in_insert_mode = 0              " only autosave after leaving insert
+
 
 " ----------------------------------------------------------------------------------
 " Dadbod
@@ -255,7 +260,7 @@ let g:db_ui_execute_on_save = 0
 " ----------------------------------------------------------------------------------
 
 let g:UltiSnipsExpandTrigger='<c-y>'
-let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 

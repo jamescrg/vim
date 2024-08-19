@@ -1,11 +1,15 @@
 
 snippet pr "print"
-print($1)
+print()
+print("-------------------------------------------------------------------------------")
+print("$1", $2)
 endsnippet
 
 snippet ppr "pretty print"
+print()
+print("-------------------------------------------------------------------------------")
 from pprint import pprint
-print($1)
+pprint($1)
 endsnippet
 
 snippet dd "dump and die"
