@@ -18,23 +18,26 @@ Plug 'tpope/vim-surround'                               " change brackets, paren
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'tpope/vim-abolish'                                " covert camel case to snake case etc.
 Plug 'tpope/vim-unimpaired'                             " complimentary pairs of mappings
-Plug 'maralla/validator.vim'                            " code validation
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
 Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'junegunn/vim-peekaboo'                            " preview registers
+
+" database
 Plug 'tpope/vim-dadbod'                                 " database interaction
 Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
 Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
 
+" completion and linting
 Plug 'maralla/completor.vim'                            " better autocomplete, always on
+" Plug 'maralla/validator.vim'                            " code validation
 Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
-
-" snippets
 Plug 'SirVer/ultisnips'                                 " snippet manager
+Plug 'dense-analysis/ale'
 
 " experimental
 Plug 'justinmk/vim-sneak'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -92,6 +95,7 @@ augroup cursor
     autocmd InsertLeave * set cursorline!
 augroup end
 
+let g:ale_completion_enabled = 1
 let g:auto_save = 1                             " autosave
 let g:auto_save_in_insert_mode = 0              " only autosave after leaving insert
 set laststatus=2                                " always show status line
@@ -166,14 +170,19 @@ let mapleader = ' '
 inoremap jj <esc>
 inoremap jk <esc>
 
-" exit vim
-nnoremap <C-d> :q!<cr>
-
-" scroll down
-nnoremap <C-m> <C-d>
+" faster movement
+nnoremap H ^
+nnoremap J <C-d>
+nnoremap K <C-u>
+nnoremap L $
+nnoremap <leader>j Jx
 
 " close buffer
-nnoremap <S-k> :bd<cr>
+nnoremap <leader>k :bd<cr>
+
+" exit vim
+nnoremap <C-d> :q!<cr>
+nnoremap Q :q!<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
@@ -189,7 +198,6 @@ nnoremap <silent> <esc> :noh<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
-" nnoremap <leader>t :Tags<cr>
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -233,9 +241,6 @@ nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
 
 " open dadbod in a separate tab
 nnoremap <silent> <leader>db :tab DBUI
-
-" reselect pasted text
-nnoremap p p`[v`]
 
 
 " ----------------------------------------------------------------------------------
