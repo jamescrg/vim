@@ -18,7 +18,7 @@ Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 
 " movement
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 
 " completion and linting
 Plug 'maralla/completor.vim'                            " better autocomplete, always on
@@ -177,6 +177,7 @@ nnoremap <leader>j Jx
 
 " close buffer
 nnoremap <leader>k :bd<cr>
+nnoremap <leader>K :%bd<cr>
 
 " exit vim
 nnoremap <C-d> :q!<cr>
@@ -262,6 +263,7 @@ let g:db_ui_execute_on_save = 0
 let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+
 
 
 " ----------------------------------------------------------------------------------
