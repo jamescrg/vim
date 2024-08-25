@@ -18,7 +18,7 @@ Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 
 " movement
-" Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 
 " completion and linting
 Plug 'maralla/completor.vim'                            " better autocomplete, always on
@@ -58,11 +58,13 @@ colorscheme seoul256-light
 " let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum'
 " set termguicolors
 " let g:everforest_background = 'medium'
+" let g:everforest_disable_italic_comment = 1
 " set background=dark
 " colorscheme everforest
 
 " status line
-hi StatusLine ctermbg=2 ctermfg=253
+hi StatusLine ctermbg=2 ctermfg=252
+hi StatusLineNC ctermbg=2 ctermfg=253
 set statusline=
 set statusline+=\ %f
 set statusline+=%=
@@ -126,6 +128,8 @@ set nowrap                                      " wrap lines
 set linebreak                                   " break at whitespace not words
 set display=lastline                            " show partial lines at the bottom of the screen
 set scrolloff=3                                 " keep at least 5 lines visible above/below cursor
+set guitablabel=%N/\ %t\ %M                     " more attractive tab labels
+
 
 " enable resizing splits in tmux
 if has('mouse_sgr')
@@ -155,6 +159,7 @@ set wildignore+=**/migrations/**
 set wildignore+=**/__pycache__/**
 set wildignore+=static/bootstrap-3.3.7/**,static/images/**
 set wildignore+=static/admin/**
+set wildignore+=logs/**
 
 
 " ---------------------------------------------------------------------------
@@ -173,6 +178,10 @@ nnoremap H ^
 nnoremap J <C-d>
 nnoremap K <C-u>
 nnoremap L $
+vnoremap H ^
+vnoremap J <C-d>
+vnoremap K <C-u>
+vnoremap L $
 nnoremap <leader>j Jx
 
 " close buffer
@@ -185,6 +194,7 @@ nnoremap <leader>q :q!<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
+nnoremap <leader>w <C-w
 nnoremap <tab> <C-w>w
 nnoremap <S-tab> <C-w>W
 nnoremap <C-p> <C-i>
@@ -197,6 +207,7 @@ nnoremap <silent> <esc> :noh<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
+nnoremap <leader>t :Tags<cr>
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -239,7 +250,8 @@ inoremap (<cr> (<cr>)<esc>O
 nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
 
 " open dadbod in a separate tab
-nnoremap <silent> <leader>db :tab DBUI
+nnoremap <silent> <leader>db :tab DBUI<cr>
+
 
 " ----------------------------------------------------------------------------------
 " Autosave
