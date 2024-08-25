@@ -65,6 +65,8 @@ colorscheme seoul256-light
 " status line
 hi StatusLine ctermbg=2 ctermfg=252
 hi StatusLineNC ctermbg=2 ctermfg=253
+hi StatusLineTerm ctermbg=2 ctermfg=253
+
 set statusline=
 set statusline+=\ %f
 set statusline+=%=
@@ -75,6 +77,11 @@ set statusline+=\ %l:%c
 " popup menu
 hi Pmenu ctermbg=253 ctermfg=5
 hi PmenuSel ctermbg=5 ctermfg=253
+
+" tab line
+:hi TabLineFill ctermfg=253 ctermbg=2
+:hi TabLine ctermfg=2 ctermbg=253
+:hi TabLineSel ctermfg=2 ctermbg=252
 
 
 " ----------------------------------------------------------------------------------
