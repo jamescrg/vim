@@ -30,24 +30,24 @@ Plug 'SirVer/ultisnips'                                 " snippet manager
 Plug 'tpope/vim-commentary'                             " comment bindings
 Plug 'tpope/vim-surround'                               " change brackets, parents, quotes, html tags
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
-Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
-Plug 'junegunn/vim-peekaboo'                            " preview registers
-Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'tpope/vim-abolish'                                " smart search and replace
-Plug 'ap/vim-css-color'                                 " show colors on css hex values
 Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
+Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
+
+" language helpers
+Plug 'ap/vim-css-color'                                 " show colors on css hex values
+Plug 'kalekundert/vim-coiled-snake'                     " python folding
+Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
 
 " database
 Plug 'tpope/vim-dadbod'                                 " database interaction
 Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
 Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
 
-" git
+" interface
 Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'rhysd/conflict-marker.vim'                        " highlight git conflicts
-Plug 'airblade/vim-gitgutter'                           " view git signs in the gutter
-
-" testing
+Plug 'junegunn/vim-peekaboo'                            " preview registers
 Plug 'vim-test/vim-test'                                " test runner
 
 call plug#end()
@@ -62,6 +62,7 @@ call plug#end()
 "   Default: 253
 let g:seoul256_background = 254
 colorscheme seoul256-light
+
 
 " everforest
 " let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum'
@@ -224,7 +225,7 @@ nnoremap <silent> <esc> :noh<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
-nnoremap <leader>t :Tags<cr>
+nnoremap <leader>h :History<cr>
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -273,35 +274,26 @@ nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
 nnoremap <silent> <leader>db :tab DBUI<cr>
 
 
-" ----------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
+" Plugin Configuration
+" ---------------------------------------------------------------------------
+
 " Autosave
-" ----------------------------------------------------------------------------------
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
 
-let g:auto_save = 1                             " autosave
-let g:auto_save_in_insert_mode = 0              " only autosave after leaving insert
+" Autopairs
+let g:AutoPairsCompleteOnlyOnSpace = 1
 
-
-" ----------------------------------------------------------------------------------
 " Dadbod
-" ----------------------------------------------------------------------------------
-
 let g:db_ui_execute_on_save = 0
 
-
-" ----------------------------------------------------------------------------------
 " UltiSnips
-" ----------------------------------------------------------------------------------
-
 let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-
-
-" ----------------------------------------------------------------------------------
 " Completor
-" ----------------------------------------------------------------------------------
-
 augroup markdown
     autocmd Filetype markdown let g:completor_auto_trigger = 0
 augroup end
@@ -310,11 +302,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
-
-" ----------------------------------------------------------------------------------
 " Validator
-" ----------------------------------------------------------------------------------
-
 let g:validator_python_checkers = ['flake8']
 let g:validator_css_checkers = ['csslint']
 let g:validator_json_checkers = ['jsonlint']
