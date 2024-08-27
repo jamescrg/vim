@@ -27,18 +27,28 @@ Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
 Plug 'SirVer/ultisnips'                                 " snippet manager
 
 " conveniences
-Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'tpope/vim-commentary'                             " comment bindings
 Plug 'tpope/vim-surround'                               " change brackets, parents, quotes, html tags
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
 Plug 'junegunn/vim-peekaboo'                            " preview registers
 Plug 'kalekundert/vim-coiled-snake'                     " python folding
+Plug 'tpope/vim-abolish'                                " smart search and replace
+Plug 'ap/vim-css-color'                                 " show colors on css hex values
+Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
 
 " database
 Plug 'tpope/vim-dadbod'                                 " database interaction
 Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
 Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
+
+" git
+Plug 'tpope/vim-fugitive'                               " git integration
+Plug 'rhysd/conflict-marker.vim'                        " highlight git conflicts
+Plug 'airblade/vim-gitgutter'                           " view git signs in the gutter
+
+" testing
+Plug 'vim-test/vim-test'                                " test runner
 
 call plug#end()
 
@@ -68,9 +78,8 @@ hi StatusLineNC ctermbg=2 ctermfg=253
 hi StatusLineTerm ctermbg=2 ctermfg=253
 
 set statusline=
-set statusline+=\ %f
-set statusline+=%=
 set statusline+=%{fugitive#statusline()}
+set statusline+=\ %f
 set statusline+=%=
 set statusline+=\ %l:%c
 
@@ -198,6 +207,7 @@ nnoremap <leader>K :%bd<cr>
 " exit vim
 nnoremap <C-d> :q!<cr>
 nnoremap <leader>q :q!<cr>
+nnoremap <leader>Q :bufdo bdelete<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
@@ -236,6 +246,9 @@ nnoremap N Nzz
 
 " search for visually selected text
 vnoremap * y/\V<C-R>=escape(@",'/\')<cr><cr>N
+
+" smart search and replace
+nnoremap <C-h> :%Subvert//{,}/g<left><left><left><left><left><left>
 
 " shortcuts to edit configuation files
 nnoremap <leader>ev :e $MYVIMRC<cr>
