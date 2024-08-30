@@ -89,9 +89,9 @@ hi Pmenu ctermbg=253 ctermfg=5
 hi PmenuSel ctermbg=5 ctermfg=253
 
 " tab line
-:hi TabLineFill ctermfg=253 ctermbg=2
-:hi TabLine ctermfg=2 ctermbg=253
-:hi TabLineSel ctermfg=2 ctermbg=252
+hi TabLineFill ctermfg=253 ctermbg=2
+hi TabLine ctermfg=2 ctermbg=253
+hi TabLineSel ctermfg=2 ctermbg=252
 
 
 " ----------------------------------------------------------------------------------
@@ -190,29 +190,14 @@ let mapleader = ' '
 inoremap jj <esc>
 inoremap jk <esc>
 
-" faster movement
-nnoremap H ^
-nnoremap J <C-d>
-nnoremap K <C-u>
-nnoremap L $
-vnoremap H ^
-vnoremap J <C-d>
-vnoremap K <C-u>
-vnoremap L $
-nnoremap <leader>j Jx
-
-" close buffer
-nnoremap <leader>k :bd<cr>
-nnoremap <leader>K :%bd<cr>
-
-" exit vim
+" exit
+nnoremap K :bd<cr>
 nnoremap <C-d> :q!<cr>
 nnoremap <leader>q :q!<cr>
-nnoremap <leader>Q :bufdo bdelete<cr>
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
-nnoremap <leader>w <C-w
+nnoremap <leader>w <C-w>
 nnoremap <tab> <C-w>w
 nnoremap <S-tab> <C-w>W
 nnoremap <C-p> <C-i>
@@ -220,12 +205,6 @@ nnoremap <C-p> <C-i>
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
 nnoremap <silent> <esc> :noh<cr>
-
-" fzf searches
-nnoremap <leader>f :Files<cr>
-nnoremap <nowait><leader>b :Buffers<cr>
-nnoremap <leader>r :Rg<cr>
-nnoremap <leader>h :History<cr>
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -256,16 +235,13 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
 
-" shortcut to view log files
-nnoremap <leader>l :e /var/log/gunicorn<cr>
-
 " save as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " auto close pairs when on separate lines
-inoremap {<cr> {<cr>}<esc>O
-inoremap [<cr> [<cr>]<esc>O
-inoremap (<cr> (<cr>)<esc>O
+" inoremap {<cr> {<cr>}<esc>O
+" inoremap [<cr> [<cr>]<esc>O
+" inoremap (<cr> (<cr>)<esc>O
 
 " open lazygit in vim
 nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
@@ -287,6 +263,12 @@ let g:AutoPairsCompleteOnlyOnSpace = 1
 
 " Dadbod
 let g:db_ui_execute_on_save = 0
+
+" FZF
+nnoremap <leader>f :Files<cr>
+nnoremap <nowait><leader>b :Buffers<cr>
+nnoremap <leader>r :Rg<cr>
+nnoremap <leader>h :History<cr>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger='<c-y>'
