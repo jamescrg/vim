@@ -79,7 +79,7 @@ hi StatusLineNC ctermbg=2 ctermfg=253
 hi StatusLineTerm ctermbg=2 ctermfg=253
 
 set statusline=
-set statusline+=%{fugitive#statusline()}
+" set statusline+=%{fugitive#statusline()}
 set statusline+=\ %f
 set statusline+=%=
 set statusline+=\ %l:%c
