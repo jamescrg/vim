@@ -201,6 +201,8 @@ nnoremap <leader>w <C-w>
 nnoremap <tab> <C-w>w
 nnoremap <S-tab> <C-w>W
 nnoremap <C-p> <C-i>
+nnoremap H <C-d>
+nnoremap L <C-u>
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
