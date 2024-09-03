@@ -38,6 +38,7 @@ Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
 Plug 'ap/vim-css-color'                                 " show colors on css hex values
 Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " database
 Plug 'tpope/vim-dadbod'                                 " database interaction
@@ -201,8 +202,10 @@ nnoremap <leader>w <C-w>
 nnoremap <tab> <C-w>w
 nnoremap <S-tab> <C-w>W
 nnoremap <C-p> <C-i>
-nnoremap H <C-d>
-nnoremap L <C-u>
+nnoremap H Hzz
+nnoremap L Lzz
+vnoremap H Hzz
+vnoremap L Lzz
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
@@ -292,3 +295,4 @@ let g:validator_css_checkers = ['csslint']
 let g:validator_json_checkers = ['jsonlint']
 let g:validator_javascript_checkers = ['eslint']
 let g:validator_vim_checkers = ['vint']
+
