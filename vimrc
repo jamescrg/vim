@@ -20,11 +20,24 @@ Plug 'farmergreg/vim-lastplace'                         " return to last positon
 " movement
 Plug 'justinmk/vim-sneak'
 
-" completion and linting
-Plug 'maralla/completor.vim'                            " better autocomplete, always on
+" LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+" Autocomplete
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+
+
+" linting
+" Plug 'maralla/completor.vim'                            " better autocomplete, always on
 Plug 'maralla/validator.vim'                            " code validation
-Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
+
+" snippets and tags
 Plug 'SirVer/ultisnips'                                 " snippet manager
+Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
 
 " conveniences
 Plug 'tpope/vim-commentary'                             " comment bindings
@@ -50,6 +63,7 @@ Plug 'tpope/vim-fugitive'                               " git integration
 Plug 'rhysd/conflict-marker.vim'                        " highlight git conflicts
 Plug 'junegunn/vim-peekaboo'                            " preview registers
 Plug 'vim-test/vim-test'                                " test runner
+" Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -168,7 +182,7 @@ augroup end
 
 " html mode
 augroup html
-    autocmd BufRead,BufNewFile *.html setlocal filetype=htmldjango foldmethod=indent
+    " autocmd BufRead,BufNewFile *.html setlocal filetype=htmldjango foldmethod=indent
 augroup end
 
 " exclude various files from vimgrep scope
@@ -186,6 +200,9 @@ set wildignore+=logs/**
 
 " leader
 let mapleader = ' '
+
+" reselect pasted text
+nnoremap p p`[v`]
 
 " escaping
 inoremap jj <esc>
@@ -281,13 +298,13 @@ let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 " Completor
-augroup markdown
-    autocmd Filetype markdown let g:completor_auto_trigger = 0
-augroup end
-let g:completor_python_binary = '/usr/bin/python3'
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" augroup markdown
+"     autocmd Filetype markdown let g:completor_auto_trigger = 0
+" augroup end
+" let g:completor_python_binary = '/usr/bin/python3'
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 " Validator
 let g:validator_python_checkers = ['flake8']
@@ -296,3 +313,21 @@ let g:validator_json_checkers = ['jsonlint']
 let g:validator_javascript_checkers = ['eslint']
 let g:validator_vim_checkers = ['vint']
 
+" LSP and Autocomplete
+
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_document_code_action_signs_enabled = 0
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 5000000,
+    \  },
+    \ }))
