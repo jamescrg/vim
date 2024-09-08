@@ -33,7 +33,8 @@ Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 
 " linting
 " Plug 'maralla/completor.vim'                            " better autocomplete, always on
-Plug 'maralla/validator.vim'                            " code validation
+" Plug 'maralla/validator.vim'                            " code validation
+Plug 'dense-analysis/ale'
 
 " snippets and tags
 Plug 'SirVer/ultisnips'                                 " snippet manager
@@ -201,9 +202,6 @@ set wildignore+=logs/**
 " leader
 let mapleader = ' '
 
-" reselect pasted text
-nnoremap p p`[v`]
-
 " escaping
 inoremap jj <esc>
 inoremap jk <esc>
@@ -276,27 +274,33 @@ nnoremap <silent> <leader>db :tab DBUI<cr>
 " Plugin Configuration
 " ---------------------------------------------------------------------------
 
+" --------------------------------------------------
 " Autosave
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
+" --------------------------------------------------
 " Autopairs
 let g:AutoPairsCompleteOnlyOnSpace = 1
 
+" --------------------------------------------------
 " Dadbod
 let g:db_ui_execute_on_save = 0
 
+" --------------------------------------------------
 " FZF
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>g :Rg<cr>
 nnoremap <leader>h :History<cr>
 
+" --------------------------------------------------
 " UltiSnips
 let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
+" --------------------------------------------------
 " Completor
 " augroup markdown
 "     autocmd Filetype markdown let g:completor_auto_trigger = 0
@@ -307,19 +311,20 @@ let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 " Validator
-let g:validator_python_checkers = ['flake8']
-let g:validator_css_checkers = ['csslint']
-let g:validator_json_checkers = ['jsonlint']
-let g:validator_javascript_checkers = ['eslint']
-let g:validator_vim_checkers = ['vint']
+" let g:validator_python_checkers = ['flake8']
+" let g:validator_css_checkers = ['csslint']
+" let g:validator_json_checkers = ['jsonlint']
+" let g:validator_javascript_checkers = ['eslint']
+" let g:validator_vim_checkers = ['vint']
 
+" --------------------------------------------------
 " LSP and Autocomplete
 
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_document_code_action_signs_enabled = 0
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+noremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
@@ -331,3 +336,21 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
     \    'max_buffer_size': 5000000,
     \  },
     \ }))
+
+
+" --------------------------------------------------
+" ALE
+
+let g:ale_disable_lsp = 1
+let g:ale_virtualtext_cursor = 0
+highlight ALEErrorSign ctermbg=1 ctermfg=254
+highlight ALEWarningSign ctermbg=1 ctermfg=254
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['black', 'autoflake', 'isort'],
+\}
+
+nnoremap <silent> <leader>a :ALEFix<cr>
+nmap <silent> ]d :ALENext<cr>
+nmap <silent> [d :ALEPrevious<cr>
