@@ -272,7 +272,7 @@ let g:db_ui_execute_on_save = 0
 " FZF
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
-nnoremap <leader>r :Rg<cr>
+nnoremap <leader>g :Rg<cr>
 nnoremap <leader>h :History<cr>
 
 " UltiSnips
