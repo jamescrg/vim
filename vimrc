@@ -30,7 +30,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 
-
 " linting
 " Plug 'maralla/completor.vim'                            " better autocomplete, always on
 " Plug 'maralla/validator.vim'                            " code validation
@@ -46,7 +45,7 @@ Plug 'tpope/vim-surround'                               " change brackets, paren
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'tpope/vim-abolish'                                " smart search and replace
 Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
-Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
+" Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
 
 " language helpers
 Plug 'ap/vim-css-color'                                 " show colors on css hex values
@@ -259,9 +258,9 @@ nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " auto close pairs when on separate lines
-" inoremap {<cr> {<cr>}<esc>O
-" inoremap [<cr> [<cr>]<esc>O
-" inoremap (<cr> (<cr>)<esc>O
+inoremap {<cr> {<cr>}<esc>O
+inoremap [<cr> [<cr>]<esc>O
+inoremap (<cr> (<cr>)<esc>O
 
 " open lazygit in vim
 nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
@@ -281,7 +280,7 @@ let g:auto_save_in_insert_mode = 0
 
 " --------------------------------------------------
 " Autopairs
-let g:AutoPairsCompleteOnlyOnSpace = 1
+" let g:AutoPairsCompleteOnlyOnSpace = 1
 
 " --------------------------------------------------
 " Dadbod
@@ -327,15 +326,14 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 noremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'buffer',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': ['go'],
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ 'config': {
-    \    'max_buffer_size': 5000000,
-    \  },
-    \ }))
+" call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+"     \ 'name': 'buffer',
+"     \ 'allowlist': ['*'],
+"     \ 'completor': function('asyncomplete#sources#buffer#completor'),
+"     \ 'config': {
+"     \    'max_buffer_size': 5000000,
+"     \  },
+"     \ }))
 
 
 " --------------------------------------------------
