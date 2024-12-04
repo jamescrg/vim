@@ -253,6 +253,7 @@ nnoremap <C-h> :%Subvert//{,}/g<left><left><left><left><left><left>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
+nnoremap <leader>eb :e ~/.dotfiles/<cr>
 
 " save as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
