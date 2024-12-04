@@ -32,7 +32,7 @@ Plug 'tpope/vim-surround'                               " change brackets, paren
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'tpope/vim-abolish'                                " smart search and replace
 Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
-Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
+" Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
 
 " language helpers
 Plug 'ap/vim-css-color'                                 " show colors on css hex values
@@ -147,6 +147,8 @@ set linebreak                                   " break at whitespace not words
 set display=lastline                            " show partial lines at the bottom of the screen
 set scrolloff=3                                 " keep at least 5 lines visible above/below cursor
 set guitablabel=%N/\ %t\ %M                     " more attractive tab labels
+set autoread
+au CursorHold * checktime
 
 
 " enable resizing splits in tmux
@@ -239,18 +241,19 @@ nnoremap <C-h> :%Subvert//{,}/g<left><left><left><left><left><left>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
-nnoremap <leader>eb :e ~/.dotfiles/<cr>
+nnoremap <leader>ed :e ~/.dotfiles/<cr>
 
 " save as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " auto close pairs when on separate lines
-" inoremap {<cr> {<cr>}<esc>O
-" inoremap [<cr> [<cr>]<esc>O
-" inoremap (<cr> (<cr>)<esc>O
+inoremap {<cr> {<cr>}<esc>O
+inoremap [<cr> [<cr>]<esc>O
+inoremap (<cr> (<cr>)<esc>O
 
 " open lazygit in vim
 nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
+nnoremap <silent> <leader>tl :tab term tail logs/law.access.log<cr>
 
 " open dadbod in a separate tab
 nnoremap <silent> <leader>db :tab DBUI<cr>
