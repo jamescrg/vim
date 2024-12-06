@@ -225,7 +225,10 @@ vnoremap L Lzz
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
-nnoremap <silent> <esc> :noh<cr>
+nnoremap <silent><esc> :noh<cr>
+
+" prevent vim from entering replace mode due to the above mapping
+nnoremap <esc>^[ <esc>^[
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
