@@ -18,7 +18,7 @@ Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 
 " movement
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 
 " completion and linting
 Plug 'maralla/completor.vim'                            " better autocomplete, always on
@@ -61,9 +61,8 @@ call plug#end()
 " seoul256 light
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
-let g:seoul256_background = 254
+let g:seoul256_background = 253
 colorscheme seoul256-light
-
 
 " everforest
 " let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum'
@@ -109,12 +108,6 @@ if &term =~ "screen"
     exec "set t_PS=\e[200~"
     exec "set t_PE=\e[201~"
 endif
-
-" highlight current line in insert mode
-augroup cursor
-    autocmd InsertEnter * set cursorline!
-    autocmd InsertLeave * set cursorline!
-augroup end
 
 set laststatus=2                                " always show status line
 set cursorline                                  " always highlight cursor line
@@ -193,10 +186,16 @@ let mapleader = ' '
 inoremap jj <esc>
 inoremap jk <esc>
 
+" close all buffers
+nnoremap <leader>dd :%bdelete<cr>
+
 " exit
 nnoremap K :bd<cr>
 nnoremap <C-d> :q!<cr>
 nnoremap <leader>q :q!<cr>
+
+" edit snake case variable name
+nnoremap <leader><space> vt_
 
 " window navigation
 nnoremap <leader>v :vsp<cr>
@@ -221,7 +220,8 @@ nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 
 " quickfix window
 nnoremap <leader>c :copen 10<cr>
-nnoremap ]q :cnext<cr>zz
+nnoremap <F6> :cnext<cr>zz
+nnoremap <F7> @@
 nnoremap [q :cprevious<cr>zz
 
 " code folding
@@ -261,6 +261,8 @@ nnoremap <silent> <leader>tl :tab term tail logs/law.access.log<cr>
 " open dadbod in a separate tab
 nnoremap <silent> <leader>db :tab DBUI<cr>
 
+nnoremap <leader>p oimport pudb; pu.db
+
 
 " ---------------------------------------------------------------------------
 " Plugin Configuration
@@ -271,7 +273,7 @@ let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
 " Autopairs
-let g:AutoPairsCompleteOnlyOnSpace = 1
+" let g:AutoPairsCompleteOnlyOnSpace = 1
 
 " Dadbod
 let g:db_ui_execute_on_save = 0
@@ -279,7 +281,7 @@ let g:db_ui_execute_on_save = 0
 " FZF
 nnoremap <leader>f :Files<cr>
 nnoremap <nowait><leader>b :Buffers<cr>
-nnoremap <leader>g :Rg<cr>
+nnoremap <leader>r :Rg<cr>
 nnoremap <leader>h :History<cr>
 
 " UltiSnips
