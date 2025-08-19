@@ -8,7 +8,6 @@ call plug#begin('~/.vim/plugged')
 
 " colors
 Plug 'junegunn/seoul256.vim'                            " preferred light colorscheme
-Plug 'sainnhe/everforest'                               " preferred dark colorscheme
 
 " files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fuzzy search utility
@@ -17,12 +16,8 @@ Plug 'tpope/vim-vinegar'                                " file broser
 Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 
-" movement
-" Plug 'justinmk/vim-sneak'
-
 " completion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " intellisense engine
-" Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
 Plug 'SirVer/ultisnips'                                 " snippet manager
 
 " conveniences
@@ -31,18 +26,13 @@ Plug 'tpope/vim-surround'                               " change brackets, paren
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'tpope/vim-abolish'                                " smart search and replace
 Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
-" Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
+Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
 
 " language helpers
 Plug 'ap/vim-css-color'                                 " show colors on css hex values
 Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
 Plug 'Vimjas/vim-python-pep8-indent'
-
-" database
-" Plug 'tpope/vim-dadbod'                                 " database interaction
-" Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
-" Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
 
 " interface
 Plug 'tpope/vim-fugitive'                               " git integration
@@ -62,15 +52,6 @@ call plug#end()
 "   Default: 253
 let g:seoul256_background = 253
 colorscheme seoul256-light
-
-" everforest
-" let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum'
-" let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum'
-" set termguicolors
-" let g:everforest_background = 'medium'
-" let g:everforest_disable_italic_comment = 1
-" set background=dark
-" colorscheme everforest
 
 " status line
 hi StatusLine ctermbg=2 ctermfg=252
@@ -219,9 +200,6 @@ nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 
 " quickfix window
 nnoremap <leader>c :copen 10<cr>
-nnoremap <F6> :cnext<cr>zz
-nnoremap <F7> @@
-nnoremap [q :cprevious<cr>zz
 
 " code folding
 nnoremap , za
@@ -249,18 +227,10 @@ nnoremap <leader>ed :e ~/.dotfiles/<cr>
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " auto close pairs when on separate lines
-inoremap {<cr> {<cr>}<esc>O
-inoremap [<cr> [<cr>]<esc>O
-inoremap (<cr> (<cr>)<esc>O
+" inoremap {<cr> {<cr>}<esc>O
+" inoremap [<cr> [<cr>]<esc>O
+" inoremap (<cr> (<cr>)<esc>O
 
-" open lazygit in vim
-nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
-nnoremap <silent> <leader>tl :tab term tail logs/law.access.log<cr>
-
-" open dadbod in a separate tab
-nnoremap <silent> <leader>db :tab DBUI<cr>
-
-nnoremap <leader>p oimport pudb; pu.db
 
 
 " ---------------------------------------------------------------------------
@@ -272,10 +242,8 @@ let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
 " Autopairs
-" let g:AutoPairsCompleteOnlyOnSpace = 1
-
-" Dadbod
-let g:db_ui_execute_on_save = 0
+let g:AutoPairsMapCR = 0  " Don't interfere with coc.nvim's CR mapping
+let g:AutoPairsMapSpace = 1  " Map space for better pair handling
 
 " FZF
 nnoremap <leader>f :Files<cr>
