@@ -21,8 +21,7 @@ Plug 'farmergreg/vim-lastplace'                         " return to last positon
 " Plug 'justinmk/vim-sneak'
 
 " completion and linting
-Plug 'maralla/completor.vim'                            " better autocomplete, always on
-Plug 'maralla/validator.vim'                            " code validation
+Plug 'neoclide/coc.nvim', {'branch': 'release'}         " intellisense engine
 Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
 Plug 'SirVer/ultisnips'                                 " snippet manager
 
@@ -289,19 +288,60 @@ let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-" Completor
-augroup markdown
-    autocmd Filetype markdown let g:completor_auto_trigger = 0
-augroup end
-let g:completor_python_binary = '/usr/bin/python3'
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" Coc.nvim
+" Use tab for trigger completion with characters ahead and navigate
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Validator
-let g:validator_python_checkers = ['flake8']
-let g:validator_css_checkers = ['csslint']
-let g:validator_json_checkers = ['jsonlint']
-let g:validator_javascript_checkers = ['eslint']
-let g:validator_vim_checkers = ['vint']
+" Make <CR> to accept selected completion item
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use <leader>k to show documentation in preview window
+nnoremap <silent> <leader>k :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code
+xmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
+
+" Apply AutoFix to problem on the current line
+nmap <leader>af  <Plug>(coc-fix-current)
+
+" Show all diagnostics
+nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 
