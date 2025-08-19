@@ -296,7 +296,7 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Make <CR> to accept selected completion item
+" Make <CR> to accept selected completion item and expand snippet if applicable
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -344,4 +344,10 @@ nmap <leader>af  <Plug>(coc-fix-current)
 
 " Show all diagnostics
 nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
+
+" Show available snippets
+nnoremap <silent><nowait> <leader>sn  :<C-u>CocList snippets<cr>
+
+" Use <C-l> to trigger snippets completion
+imap <C-l> <Plug>(coc-snippets-expand)
 

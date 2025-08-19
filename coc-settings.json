@@ -54,5 +54,11 @@
   "css.validate": true,
   "html.validate.scripts": true,
   "html.validate.styles": true,
-  "json.format.enable": true
+  "json.format.enable": true,
+  "snippets.ultisnips.enable": true,
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.vim/UltiSnips"],
+  "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
+  "suggest.completionItemKindLabels": {
+    "snippet": "◉"
+  }
 }
