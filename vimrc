@@ -22,7 +22,7 @@ Plug 'farmergreg/vim-lastplace'                         " return to last positon
 
 " completion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " intellisense engine
-Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
+" Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
 Plug 'SirVer/ultisnips'                                 " snippet manager
 
 " conveniences
@@ -40,9 +40,9 @@ Plug 'valloric/MatchTagAlways'                          " highlight matching htm
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " database
-Plug 'tpope/vim-dadbod'                                 " database interaction
-Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
-Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
+" Plug 'tpope/vim-dadbod'                                 " database interaction
+" Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
+" Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
 
 " interface
 Plug 'tpope/vim-fugitive'                               " git integration
