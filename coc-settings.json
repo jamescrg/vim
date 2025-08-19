@@ -1,29 +1,43 @@
 {
-  "inlayHint.enable": false,
-  "suggest.enablePreview": true,
-  "suggest.enablePreselect": true,
-  "suggest.noselect": false,
-  "suggest.timeout": 5000,
-  "suggest.minTriggerInputLength": 2,
-  "diagnostic.errorSign": "✖",
-  "diagnostic.warningSign": "⚠",
-  "diagnostic.infoSign": "ℹ",
-  "diagnostic.hintSign": "➤",
-  "diagnostic.checkCurrentLine": true,
-  "diagnostic.virtualText": false,
-  "diagnostic.virtualTextCurrentLineOnly": false,
-  "diagnostic.enableMessage": "always",
-  "diagnostic.refreshOnInsertMode": false,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "html", "json", "javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "eslint.autoFixOnSave": true,
-  "css.validate": true,
-  "html.validate.scripts": true,
-  "html.validate.styles": true,
-  "json.format.enable": true,
-  "snippets.ultisnips.enable": true,
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.vim/UltiSnips"],
-  "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
-  "suggest.completionItemKindLabels": {
-    "snippet": "◉"
-  }
+    "inlayHint.enable": false,
+    "suggest.enablePreview": true,
+    "suggest.enablePreselect": true,
+    "suggest.noselect": false,
+    "suggest.timeout": 5000,
+    "suggest.minTriggerInputLength": 2,
+    "diagnostic.errorSign": "✖",
+    "diagnostic.warningSign": "⚠",
+    "diagnostic.infoSign": "ℹ",
+    "diagnostic.hintSign": "➤",
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.virtualText": false,
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "diagnostic.enableMessage": "always",
+    "diagnostic.refreshOnInsertMode": false,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "html",
+        "json",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "eslint.autoFixOnSave": true,
+    "css.validate": true,
+    "html.validate.scripts": true,
+    "html.validate.styles": true,
+    "json.format.enable": true,
+    "snippets.ultisnips.enable": true,
+    "snippets.ultisnips.directories": [
+        "UltiSnips",
+        "~/.vim/UltiSnips"
+    ],
+    "snippets.userSnippetsDirectory": "~/.vim/UltiSnips",
+    "suggest.completionItemKindLabels": {
+        "snippet": "◉"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }
