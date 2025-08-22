@@ -24,7 +24,10 @@
         "typescriptreact"
     ],
     "eslint.autoFixOnSave": true,
-    "css.validate": true,
+    "stylelintplus.enable": true,
+    "stylelintplus.cssInJs": true,
+    "stylelintplus.autoFixOnSave": false,
+    "css.validate": false,
     "html.validate.scripts": true,
     "html.validate.styles": true,
     "json.format.enable": true,
@@ -39,5 +42,8 @@
     },
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
+    "python.linting.enabled": true,
+    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.diagnosticMode": "openFilesOnly"
 }
