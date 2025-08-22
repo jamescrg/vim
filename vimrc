@@ -226,11 +226,6 @@ nnoremap <leader>ed :e ~/.dotfiles/<cr>
 " save as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
-" auto close pairs when on separate lines
-" inoremap {<cr> {<cr>}<esc>O
-" inoremap [<cr> [<cr>]<esc>O
-" inoremap (<cr> (<cr>)<esc>O
-
 
 
 " ---------------------------------------------------------------------------
@@ -251,11 +246,6 @@ nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>h :History<cr>
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger='<c-y>'
-let g:UltiSnipsJumpForwardTrigger='<c-y>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-
 " Coc.nvim
 " Use tab for trigger completion with characters ahead and navigate
 inoremap <silent><expr> <TAB>
@@ -272,9 +262,6 @@ function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
