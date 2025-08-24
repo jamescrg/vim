@@ -40,6 +40,9 @@ Plug 'rhysd/conflict-marker.vim'                        " highlight git conflict
 Plug 'junegunn/vim-peekaboo'                            " preview registers
 Plug 'vim-test/vim-test'                                " test runner
 
+" writing
+Plug 'junegunn/goyo.vim'                                " writing mode
+
 call plug#end()
 
 
@@ -146,6 +149,14 @@ augroup html
     autocmd BufRead,BufNewFile *.html setlocal filetype=htmldjango foldmethod=indent
 augroup end
 
+" writing mode
+augroup md
+    autocmd BufRead,BufNewFile *.md setlocal spell wrap
+    autocmd BufRead,BufNewFile *.md let b:coc_enabled = 0
+    autocmd BufRead,BufNewFile *.md nnoremap <buffer> j gj
+    autocmd BufRead,BufNewFile *.md nnoremap <buffer> k gk
+augroup end
+
 " exclude various files from vimgrep scope
 set wildignore+=tags,.git/**
 set wildignore+=**/migrations/**
@@ -165,6 +176,9 @@ let mapleader = ' '
 " escaping
 inoremap jj <esc>
 inoremap jk <esc>
+
+" delete word with ctrl-backspace (terminal sends ^H)
+inoremap <C-h> <C-w>
 
 " close all buffers
 nnoremap <leader>dd :%bdelete<cr>
@@ -225,6 +239,23 @@ nnoremap <leader>ed :e ~/.dotfiles/<cr>
 
 " save as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+" for writing
+nnoremap <leader>ss :set spell!<cr>
+nnoremap <leader>sw :set wrap!<cr>
+nnoremap <leader>gg :Goyo<cr>
+
+" Goyo settings
+let g:goyo_width = 100
+
+" Restore statusline colors after leaving Goyo
+function! s:goyo_leave()
+  hi StatusLine ctermbg=2 ctermfg=252
+  hi StatusLineNC ctermbg=2 ctermfg=253
+  hi StatusLineTerm ctermbg=2 ctermfg=253
+endfunction
+
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
 
