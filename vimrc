@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 
 " colors
 Plug 'junegunn/seoul256.vim'                            " preferred light colorscheme
+Plug 'sainnhe/everforest'                               " preferred dark colorscheme
 
 " files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fuzzy search utility
@@ -45,36 +46,47 @@ Plug 'junegunn/goyo.vim'                                " writing mode
 
 call plug#end()
 
-
 " ----------------------------------------------------------------------------------
-" Appearance
+" Appearance Seoul 256
 " ----------------------------------------------------------------------------------
 
 " seoul256 light
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
-let g:seoul256_background = 253
-colorscheme seoul256-light
+" let g:seoul256_background = 253
+" colorscheme seoul256-light
 
 " status line
-hi StatusLine ctermbg=2 ctermfg=252
-hi StatusLineNC ctermbg=2 ctermfg=253
-hi StatusLineTerm ctermbg=2 ctermfg=253
+" hi StatusLine ctermbg=2 ctermfg=252
+" hi StatusLineNC ctermbg=2 ctermfg=253
+" hi StatusLineTerm ctermbg=2 ctermfg=253
 
-set statusline=
-" set statusline+=%{fugitive#statusline()}
-set statusline+=\ %f
-set statusline+=%=
-set statusline+=\ %l:%c
+" set statusline=
+" set statusline+=\ %f
+" set statusline+=%=
+" set statusline+=\ %l:%c
 
 " popup menu
-hi Pmenu ctermbg=253 ctermfg=5
-hi PmenuSel ctermbg=5 ctermfg=253
+" hi Pmenu ctermbg=253 ctermfg=5
+" hi PmenuSel ctermbg=5 ctermfg=253
 
 " tab line
-hi TabLineFill ctermfg=253 ctermbg=2
-hi TabLine ctermfg=2 ctermbg=253
-hi TabLineSel ctermfg=2 ctermbg=252
+" hi TabLineFill ctermfg=253 ctermbg=2
+" hi TabLine ctermfg=2 ctermbg=253
+" hi TabLineSel ctermfg=2 ctermbg=252
+
+
+" ----------------------------------------------------------------------------------
+" Appearance Seoul 256
+" ----------------------------------------------------------------------------------
+
+if has('termguicolors')
+    set termguicolors
+endif
+set background=dark
+" let g:everforest_background = 'soft'
+let g:everforest_better_performance = 1
+colorscheme everforest
 
 
 " ----------------------------------------------------------------------------------
