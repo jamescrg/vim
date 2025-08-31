@@ -16,7 +16,6 @@
     "diagnostic.refreshOnInsertMode": false,
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
-        "html",
         "json",
         "javascript",
         "javascriptreact",

@@ -47,7 +47,7 @@ Plug 'junegunn/goyo.vim'                                " writing mode
 call plug#end()
 
 " ----------------------------------------------------------------------------------
-" Appearance Seoul 256
+" Seoul256
 " ----------------------------------------------------------------------------------
 
 " seoul256 light
@@ -77,7 +77,7 @@ hi TabLineSel ctermfg=2 ctermbg=252
 
 
 " ----------------------------------------------------------------------------------
-" Appearance Everforest
+" Everforest
 " ----------------------------------------------------------------------------------
 
 " if has('termguicolors')
@@ -193,7 +193,7 @@ inoremap jk <esc>
 inoremap <C-h> <C-w>
 
 " close all buffers
-nnoremap <leader>dd :%bdelete<cr>
+nnoremap <leader>ca :%bdelete<cr>
 
 " exit
 nnoremap K :bd<cr>
@@ -225,7 +225,7 @@ nnoremap <esc>^[ <esc>^[
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
 
 " quickfix window
-nnoremap <leader>c :copen 10<cr>
+nnoremap <leader>co :copen 10<cr>
 
 " code folding
 nnoremap , za
@@ -290,21 +290,15 @@ nnoremap <leader>r :Rg<cr>
 nnoremap <leader>h :History<cr>
 
 " Coc.nvim
-" Use tab for trigger completion with characters ahead and navigate
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Disable auto formatting on save
+let g:coc_preferences_formatOnSaveFiletypes = []
 
-" Make <CR> to accept selected completion item and expand snippet if applicable
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" Completor-style keyboard mappings for CoC's popup menu
+" Tab/Shift-Tab navigate through CoC's suggestions (when menu is visible)
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+" Enter accepts the selected completion (Ctrl-Y behavior)
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<cr>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
