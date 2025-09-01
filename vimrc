@@ -104,6 +104,13 @@ if &term =~ "screen"
     exec "set t_PE=\e[201~"
 endif
 
+" coc optimization
+set encoding=utf-8
+set nobackup
+set nowritebackup
+set updatetime=300
+
+" other settings
 set laststatus=2                                " always show status line
 set cursorline                                  " always highlight cursor line
 set ignorecase                                  " ignore case
@@ -136,7 +143,6 @@ set display=lastline                            " show partial lines at the bott
 set scrolloff=3                                 " keep at least 5 lines visible above/below cursor
 set guitablabel=%N/\ %t\ %M                     " more attractive tab labels
 set autoread
-au CursorHold * checktime
 
 
 " enable resizing splits in tmux
@@ -164,7 +170,7 @@ augroup end
 " writing mode
 augroup md
     autocmd BufRead,BufNewFile *.md setlocal spell wrap
-    autocmd BufRead,BufNewFile *.md let b:coc_enabled = 0
+    " autocmd BufRead,BufNewFile *.md let b:coc_enabled = 0
     autocmd BufRead,BufNewFile *.md nnoremap <buffer> j gj
     autocmd BufRead,BufNewFile *.md nnoremap <buffer> k gk
 augroup end
@@ -321,21 +327,12 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
 xmap <leader>F  <Plug>(coc-format-selected)
 nmap <leader>F  <Plug>(coc-format-selected)
-
-" Apply AutoFix to problem on the current line
-nmap <leader>af  <Plug>(coc-fix-current)
-
-" Show all diagnostics
-nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 
 " Show available snippets
 nnoremap <silent><nowait> <leader>sn  :<C-u>CocList snippets<cr>
