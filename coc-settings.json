@@ -1,10 +1,14 @@
 {
     "inlayHint.enable": false,
+    "suggest.autoTrigger": "always",
+    "suggest.triggerAfterInsertEnter": true,
     "suggest.enablePreview": true,
-    "suggest.enablePreselect": true,
-    "suggest.noselect": false,
+    "suggest.enablePreselect": false,
+    "suggest.noselect": true,
     "suggest.timeout": 5000,
-    "suggest.minTriggerInputLength": 2,
+    "suggest.minTriggerInputLength": 1,
+    "suggest.keepCompleteopt": false,
+    "suggest.acceptSuggestionOnCommitCharacter": false,
     "diagnostic.errorSign": "✖",
     "diagnostic.warningSign": "⚠",
     "diagnostic.infoSign": "ℹ",
@@ -14,15 +18,8 @@
     "diagnostic.virtualTextCurrentLineOnly": false,
     "diagnostic.enableMessage": "always",
     "diagnostic.refreshOnInsertMode": false,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "css",
-        "json",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-    ],
-    "eslint.autoFixOnSave": true,
+    "coc.preferences.formatOnSaveFiletypes": [],
+    "eslint.autoFixOnSave": false,
     "stylelintplus.enable": true,
     "stylelintplus.cssInJs": true,
     "stylelintplus.autoFixOnSave": false,
@@ -40,7 +37,7 @@
         "snippet": "◉"
     },
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+        "source.fixAll.eslint": false
     },
     "python.linting.enabled": true,
     "python.analysis.typeCheckingMode": "off",

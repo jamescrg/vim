@@ -295,6 +295,11 @@ nnoremap <nowait><leader>b :Buffers<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>h :History<cr>
 
+" UltiSnips
+let g:UltiSnipsExpandTrigger='<c-y>'
+let g:UltiSnipsJumpForwardTrigger='<c-y>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+
 " Coc.nvim
 " Disable auto formatting on save
 let g:coc_preferences_formatOnSaveFiletypes = []
