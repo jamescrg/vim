@@ -13,7 +13,7 @@ Plug 'sainnhe/everforest'                               " preferred dark colorsc
 " files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fuzzy search utility
 Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
-Plug 'tpope/vim-vinegar'                                " file broser
+Plug 'tpope/vim-vinegar'                                " file bros
 Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 
@@ -27,7 +27,6 @@ Plug 'tpope/vim-surround'                               " change brackets, paren
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'tpope/vim-abolish'                                " smart search and replace
 Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
-" Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
 
 " language helpers
 Plug 'ap/vim-css-color'                                 " show colors on css hex values
@@ -203,8 +202,7 @@ nnoremap <leader>ca :%bdelete<cr>
 
 " exit
 nnoremap K :bd<cr>
-nnoremap <C-d> :q!<cr>
-nnoremap <leader>q :q!<cr>
+nnoremap <leader>q l
 
 " edit snake case variable name
 nnoremap <leader><space> vt_
@@ -215,10 +213,8 @@ nnoremap <leader>w <C-w>
 nnoremap <tab> <C-w>w
 nnoremap <S-tab> <C-w>W
 nnoremap <C-p> <C-i>
-nnoremap H Hzz
-nnoremap L Lzz
-vnoremap H Hzz
-vnoremap L Lzz
+nnoremap H ^
+nnoremap L $
 
 " clear highlighted search text until next explicit search or n/N
 " <silent> - so as to not print :noh on last line when invoked
@@ -248,6 +244,13 @@ vnoremap * y/\V<C-R>=escape(@",'/\')<cr><cr>N
 
 " smart search and replace
 nnoremap <C-h> :%Subvert//{,}/g<left><left><left><left><left><left>
+
+" auto close pairs when on separate lines
+inoremap {<cr> {<cr>}<esc>O
+inoremap [<cr> [<cr>]<esc>O
+inoremap (<cr> (<cr>)<esc>O
+
+
 
 " shortcuts to edit configuation files
 nnoremap <leader>ev :e $MYVIMRC<cr>
