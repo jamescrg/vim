@@ -27,7 +27,7 @@ Plug 'tpope/vim-surround'                               " change brackets, paren
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'tpope/vim-abolish'                                " smart search and replace
 Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
-Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
+" Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
 
 " language helpers
 Plug 'ap/vim-css-color'                                 " show colors on css hex values
@@ -284,10 +284,6 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Autosave
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
-
-" Autopairs
-let g:AutoPairsMapCR = 0  " Don't interfere with coc.nvim's CR mapping
-let g:AutoPairsMapSpace = 1  " Map space for better pair handling
 
 " FZF
 nnoremap <leader>f :Files<cr>
