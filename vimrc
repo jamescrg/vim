@@ -20,6 +20,7 @@ Plug 'farmergreg/vim-lastplace'                         " return to last positon
 " completion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " intellisense engine
 Plug 'SirVer/ultisnips'                                 " snippet manager
+" Plug 'LunarWatcher/auto-pairs'                          " auto pairs
 
 " conveniences
 Plug 'tpope/vim-commentary'                             " comment bindings
@@ -202,7 +203,8 @@ nnoremap <leader>ca :%bdelete<cr>
 
 " exit
 nnoremap K :bd<cr>
-nnoremap <leader>q l
+nnoremap <C-d> :q!<cr>
+nnoremap <leader>q :q!<cr>
 
 " edit snake case variable name
 nnoremap <leader><space> vt_
@@ -271,9 +273,9 @@ let g:goyo_width = 100
 
 " Restore statusline colors after leaving Goyo
 function! s:goyo_leave()
-  hi StatusLine ctermbg=2 ctermfg=252
-  hi StatusLineNC ctermbg=2 ctermfg=253
-  hi StatusLineTerm ctermbg=2 ctermfg=253
+hi StatusLine ctermbg=2 ctermfg=252
+hi StatusLineNC ctermbg=2 ctermfg=253
+hi StatusLineTerm ctermbg=2 ctermfg=253
 endfunction
 
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
