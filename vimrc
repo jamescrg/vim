@@ -11,14 +11,14 @@ Plug 'junegunn/seoul256.vim'                            " preferred light colors
 Plug 'sainnhe/everforest'                               " preferred dark colorscheme
 
 " files
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fuzzy search utility
-Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
-Plug 'tpope/vim-vinegar'                                " file broser
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() }, 'on': ['Files', 'Buffers', 'Rg', 'History', 'GFiles'] }
+Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Buffers', 'Rg', 'History', 'GFiles'] }
+Plug 'tpope/vim-vinegar'                                " file browser
 Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 
 " movement
-Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'                               " two-character motion plugin
 
 " LSP
 Plug 'prabirshrestha/vim-lsp'
@@ -51,19 +51,18 @@ Plug 'tpope/vim-eunuch'                                 " write a privileged fil
 Plug 'ap/vim-css-color'                                 " show colors on css hex values
 Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
-Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent'                    " PEP8 indentation for Python
 
 " database
-Plug 'tpope/vim-dadbod'                                 " database interaction
-Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
-Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
+Plug 'tpope/vim-dadbod', { 'on': 'DB' }                 " database interaction
+Plug 'kristijanhusak/vim-dadbod-ui', { 'on': 'DBUI' }   " ui for database interaction
+Plug 'kristijanhusak/vim-dadbod-completion', { 'on': 'DBUI' }
 
 " interface
-Plug 'tpope/vim-fugitive'                               " git integration
+Plug 'tpope/vim-fugitive', { 'on': ['Git', 'G', 'Gstatus', 'Gblame', 'Gdiff', 'Glog'] }
 Plug 'rhysd/conflict-marker.vim'                        " highlight git conflicts
 Plug 'junegunn/vim-peekaboo'                            " preview registers
-Plug 'vim-test/vim-test'                                " test runner
-" Plug 'mhinz/vim-startify'
+Plug 'vim-test/vim-test', { 'on': ['TestNearest', 'TestFile', 'TestSuite', 'TestLast'] }
 
 call plug#end()
 
@@ -79,22 +78,12 @@ let g:seoul256_background = 254
 colorscheme seoul256-light
 
 
-" everforest
-" let &t_8f = '\<Esc>[38;2;%lu;%lu;%lum'
-" let &t_8b = '\<Esc>[48;2;%lu;%lu;%lum'
-" set termguicolors
-" let g:everforest_background = 'medium'
-" let g:everforest_disable_italic_comment = 1
-" set background=dark
-" colorscheme everforest
-
 " status line
 hi StatusLine ctermbg=2 ctermfg=252
 hi StatusLineNC ctermbg=2 ctermfg=253
 hi StatusLineTerm ctermbg=2 ctermfg=253
 
 set statusline=
-" set statusline+=%{fugitive#statusline()}
 set statusline+=\ %f
 set statusline+=%=
 set statusline+=\ %l:%c
@@ -149,7 +138,7 @@ set shiftwidth=4                                " sets number of spaces to inser
 set autoindent                                  " autoindent
 set shiftround                                  " use multiple of shiftwidth when indenting with '<' and '>'
 set backspace=indent,eol,start                  " backspace
-set ttimeoutlen=50                              " elminiate delay in escaping out of fzf
+set ttimeoutlen=50                              " eliminate delay in escaping out of fzf
 set undofile                                    " persistent undo history
 set undodir=~/.vim/undodir                      " undo history file location
 set viminfofile=~/.vim/viminfo                  " move viminfo to vim folder
@@ -159,8 +148,11 @@ set relativenumber                              " use relative line numbers
 set nowrap                                      " wrap lines
 set linebreak                                   " break at whitespace not words
 set display=lastline                            " show partial lines at the bottom of the screen
-set scrolloff=3                                 " keep at least 5 lines visible above/below cursor
+set scrolloff=3                                 " keep at least 3 lines visible above/below cursor
 set guitablabel=%N/\ %t\ %M                     " more attractive tab labels
+set belloff=all                                 " disable all error bells
+set title                                       " set terminal title to filename
+set listchars=tab:>-,trail:~,extends:>,precedes:<
 set autoread
 au CursorHold * checktime
 
@@ -184,7 +176,7 @@ augroup end
 
 " html mode
 augroup html
-    " autocmd BufRead,BufNewFile *.html setlocal filetype=htmldjango foldmethod=indent
+    autocmd BufRead,BufNewFile *.html setlocal filetype=htmldjango
 augroup end
 
 " exclude various files from vimgrep scope
@@ -227,8 +219,8 @@ vnoremap L Lzz
 " <silent> - so as to not print :noh on last line when invoked
 nnoremap <silent><esc> :noh<cr>
 
-" prevent vim from entering replace mode due to the above mapping
-nnoremap <esc>^[ <esc>^[
+" prevent vim from entering replace mode due to double-escape in some terminals
+nnoremap <esc><esc> <nop>
 
 " vimgrep I like better than FZF ripgrep
 nnoremap <C-f> :vimgrep '' **/*<left><left><left><left><left><left>
@@ -254,7 +246,10 @@ vnoremap * y/\V<C-R>=escape(@",'/\')<cr><cr>N
 " smart search and replace
 nnoremap <C-h> :%Subvert//{,}/g<left><left><left><left><left><left>
 
-" shortcuts to edit configuation files
+" toggle relative line numbers
+nnoremap <leader>rn :set relativenumber!<cr>
+
+" shortcuts to edit configuration files
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 nnoremap <leader>es :e ~/.vim/UltiSnips<cr>
@@ -270,7 +265,6 @@ inoremap (<cr> (<cr>)<esc>O
 
 " open lazygit in vim
 nnoremap <silent> <leader>lg :tab term ++close lazygit<cr>
-nnoremap <silent> <leader>tl :tab term tail logs/law.access.log<cr>
 
 " open dadbod in a separate tab
 nnoremap <silent> <leader>db :tab DBUI<cr>
