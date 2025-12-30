@@ -20,24 +20,10 @@ Plug 'farmergreg/vim-lastplace'                         " return to last positon
 " movement
 Plug 'justinmk/vim-sneak'                               " two-character motion plugin
 
-" LSP
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-
-" Autocomplete
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-
-" linting
-" Plug 'maralla/completor.vim'                            " better autocomplete, always on
-" Plug 'maralla/validator.vim'                            " code validation
-Plug 'dense-analysis/ale'
-
-" snippets and tags
-Plug 'SirVer/ultisnips'                                 " snippet manager
+" completion and linting
+Plug 'yegappan/lsp'                                     " lightweight LSP client
 Plug 'ludovicchabant/vim-gutentags'                     " auto update tags file
+Plug 'SirVer/ultisnips'                                 " snippet manager
 
 " conveniences
 Plug 'tpope/vim-commentary'                             " comment bindings
@@ -300,56 +286,38 @@ let g:UltiSnipsExpandTrigger='<c-y>'
 let g:UltiSnipsJumpForwardTrigger='<c-y>'
 let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-" --------------------------------------------------
-" Completor
-" augroup markdown
-"     autocmd Filetype markdown let g:completor_auto_trigger = 0
-" augroup end
-" let g:completor_python_binary = '/usr/bin/python3'
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" Completion popup navigation (works with LSP)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
-" Validator
-" let g:validator_python_checkers = ['flake8']
-" let g:validator_css_checkers = ['csslint']
-" let g:validator_json_checkers = ['jsonlint']
-" let g:validator_javascript_checkers = ['eslint']
-" let g:validator_vim_checkers = ['vint']
+" LSP
+let lspServers = [
+\   #{
+\     name: 'pylsp',
+\     filetype: 'python',
+\     path: 'pylsp',
+\     args: []
+\   }
+\ ]
 
-" --------------------------------------------------
-" LSP and Autocomplete
+let lspOptions = #{
+\   autoComplete: v:true,
+\   showDiagOnStatusLine: v:true,
+\   diagVirtualTextAlign: 'after',
+\   autoHighlightDiags: v:true,
+\ }
 
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_document_code_action_signs_enabled = 0
+augroup lsp_setup
+    autocmd!
+    autocmd VimEnter * call LspAddServer(lspServers)
+    autocmd VimEnter * call LspOptionsSet(lspOptions)
+augroup end
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-noremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-
-" call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-"     \ 'name': 'buffer',
-"     \ 'allowlist': ['*'],
-"     \ 'completor': function('asyncomplete#sources#buffer#completor'),
-"     \ 'config': {
-"     \    'max_buffer_size': 5000000,
-"     \  },
-"     \ }))
-
-
-" --------------------------------------------------
-" ALE
-
-let g:ale_disable_lsp = 1
-let g:ale_virtualtext_cursor = 0
-highlight ALEErrorSign ctermbg=1 ctermfg=254
-highlight ALEWarningSign ctermbg=1 ctermfg=254
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black', 'autoflake', 'isort'],
-\}
-
-nnoremap <silent> <leader>a :ALEFix<cr>
-nmap <silent> ]d :ALENext<cr>
-nmap <silent> [d :ALEPrevious<cr>
+" LSP keymaps
+nnoremap gd :LspGotoDefinition<cr>
+nnoremap gr :LspShowReferences<cr>
+nnoremap gh :LspHover<cr>
+nnoremap <leader>rr :LspRename<cr>
+nnoremap ]d :LspDiagNext<cr>
+nnoremap [d :LspDiagPrev<cr>
