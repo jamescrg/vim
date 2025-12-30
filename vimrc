@@ -17,9 +17,6 @@ Plug 'tpope/vim-vinegar'                                " file broser
 Plug 'vim-scripts/vim-auto-save'                        " auto save
 Plug 'farmergreg/vim-lastplace'                         " return to last positon in file when opened
 
-" movement
-" Plug 'justinmk/vim-sneak'
-
 " completion and linting
 Plug 'maralla/completor.vim'                            " better autocomplete, always on
 Plug 'maralla/validator.vim'                            " code validation
@@ -32,24 +29,11 @@ Plug 'tpope/vim-surround'                               " change brackets, paren
 Plug 'tpope/vim-repeat'                                 " repeat plugin actions
 Plug 'tpope/vim-abolish'                                " smart search and replace
 Plug 'tpope/vim-eunuch'                                 " write a privileged files, other unix commands
-" Plug 'LunarWatcher/auto-pairs'                          " autopairs, better?
 
 " language helpers
-Plug 'ap/vim-css-color'                                 " show colors on css hex values
 Plug 'kalekundert/vim-coiled-snake'                     " python folding
 Plug 'valloric/MatchTagAlways'                          " highlight matching html tags
-Plug 'Vimjas/vim-python-pep8-indent'
-
-" database
-Plug 'tpope/vim-dadbod'                                 " database interaction
-Plug 'kristijanhusak/vim-dadbod-ui'                     " ui for databse interaction
-Plug 'kristijanhusak/vim-dadbod-completion'             " autocompletion for database ui
-
-" interface
-Plug 'tpope/vim-fugitive'                               " git integration
-Plug 'rhysd/conflict-marker.vim'                        " highlight git conflicts
-Plug 'junegunn/vim-peekaboo'                            " preview registers
-Plug 'vim-test/vim-test'                                " test runner
+Plug 'Vimjas/vim-python-pep8-indent'                    " python compliant indentation
 
 call plug#end()
 
@@ -181,6 +165,9 @@ set wildignore+=logs/**
 
 " leader
 let mapleader = ' '
+
+nnoremap j gj
+nnoremap k gk
 
 " escaping
 inoremap jj <esc>
